@@ -1,0 +1,307 @@
+---
+const { title = "michaelwong.space" } = Astro.props;
+---
+
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+
+    <!-- 字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://pic.imgdb.cn/item/65556356c458853aef4ed7e8.png">
+  </head>
+
+  <body>
+    <!-- 光源 -->
+    <div class="light-source blue-light"></div>
+    <div class="light-source red-light"></div>
+
+    <!-- 右上角品牌与导航 -->
+    <div class="brand-nav">
+      <div class="brand">
+        <!-- 替换为你的字标图床链接 -->
+        <a href="/">
+          <img src="https://pic1.imgdb.cn/item/6995d39a556e27f1c93a3414.png" alt="字标与徽标" class="logo" />
+        </a>
+      </div>
+
+      <nav class="vertical-nav">
+        <a href="/poetry-prose" class="nav-item">
+          <div class="nav-title">
+            <span class="en">POETRY & PROSE</span>
+            <span class="zh">穑斋诗文</span>
+          </div>
+          <div class="nav-desc">
+            二两碘酊作为"穑斋主人"的诗文创作空间。<br>
+            记录了他的诗词作品和一些随笔。
+          </div>
+        </a>
+
+        <a href="/programming" class="nav-item">
+          <div class="nav-title">
+            <span class="en">PROGRAMMING</span>
+            <span class="zh">程序设计</span>
+          </div>
+          <div class="nav-desc">
+            二两碘酊关于程序设计的一切。<br>
+            从 OI 到 ACM，从算法到数据结构，<br>从学习笔记到授课教案……
+          </div>
+        </a>
+
+        <a href="/archive" class="nav-item">
+          <div class="nav-title">
+            <span class="en">ARCHIVE</span>
+            <span class="zh">个人档案</span>
+          </div>
+          <div class="nav-desc">
+            个人档案馆。<br>
+            关于回忆录，关于创作的视频作品，<br>关于二两碘酊的琐碎线索。
+          </div>
+        </a>
+
+        <a href="/about" class="nav-item">
+          <div class="nav-title">
+            <span class="en">ABOUT</span>
+            <span class="zh">关于</span>
+          </div>
+          <div class="nav-desc">
+            想快速了解我？<br>想知道更多？
+          </div>
+        </a>
+      </nav>
+    </div>
+
+    <!-- 页面内容 -->
+    <main class="page-content">
+      <slot />
+    </main>
+
+    <script>
+      // 立即滚动到顶部
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      window.scrollTo(0, 0);
+      
+      // 页面加载完成后再次确保滚动到顶部
+      window.addEventListener('load', () => {
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        window.scrollTo(0, 0);
+      });
+    </script>
+
+  </body>
+</html>
+
+<style>
+  :root {
+    --bg-color: #000000;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+  }
+
+  html {
+    scroll-behavior: auto;
+    overflow-x: hidden;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* --- 环境光源特效 --- */
+  .light-source {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .blue-light {
+    width: 40vw;
+    height: 40vw;
+    background-color: #00094b;
+    opacity: 0.9;
+    top: -8vw;
+    right: -8vw;
+    animation: moveBlueLights 8s ease-in-out infinite;
+  }
+
+  .red-light {
+    width: 40vw;
+    height: 40vw;
+    background-color: #6d0e11;
+    opacity: 0.7;
+    mix-blend-mode: screen;
+    top: 5vw;
+    right: 0vw;
+    animation: moveRedLights 10s ease-in-out infinite;
+  }
+
+  /* 光源动画 */
+  @keyframes moveBlueLights {
+    0% {
+      top: -8vw;
+      right: -8vw;
+    }
+    50% {
+      top: -18vw;
+      right: 5vw;
+    }
+    100% {
+      top: -8vw;
+      right: -8vw;
+    }
+  }
+
+  @keyframes moveRedLights {
+    0% {
+      top: 5vw;
+      right: 0vw;
+    }
+    50% {
+      top: -5vw;
+      right: 15vw;
+    }
+    100% {
+      top: 5vw;
+      right: 0vw;
+    }
+  }
+
+  /* --- 右上角品牌与导航 --- */
+  .brand-nav {
+    position: absolute;
+    top: 40px;
+    right: 60px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 27px;
+  }
+
+  .logo {
+    height: 55px;
+    opacity: 0.85;
+    transform: translateX(14px);
+  }
+
+  .vertical-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    text-align: right;
+  }
+
+  .nav-item {
+    text-decoration: none;
+    display: block;
+    transition: all 0.4s ease;
+  }
+
+  .nav-title .en {
+    display: block;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.55);
+    transition: color 0.3s ease;
+  }
+
+  .nav-title .zh {
+    display: block;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 0.8rem;
+    margin-top: 4px;
+    color: rgba(255,255,255,0.35);
+    transition: color 0.3s ease;
+  }
+
+  .nav-desc {
+    max-height: 0;
+    overflow: hidden;
+    font-size: 0.75rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.4);
+    margin-top: 0;
+    transition: max-height 0.4s ease, margin-top 0.4s ease, opacity 0.4s ease;
+    opacity: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    max-width: 35ch;
+    hyphens: auto;
+  }
+
+  .nav-item:hover .nav-desc {
+    max-height: 80px;
+    margin-top: 12px;
+    opacity: 1;
+  }
+
+  .nav-item:hover .en {
+    color: #ffffff;
+  }
+
+  .nav-item:hover .zh {
+    color: rgba(255,255,255,0.75);
+  }
+
+  /* --- 页面内容区 --- */
+  .page-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
+
+  /* --- 响应式设计（适配手机端） --- */
+  @media (max-width: 768px) {
+    .brand-nav {
+      top: 20px;
+      right: 20px;
+    }
+
+    .logo {
+      height: 55px;
+      transform: translateX(8px);
+    }
+
+    .vertical-nav {
+      gap: 24px;
+    }
+
+    .vertical-nav .en {
+      font-size: 0.9rem;
+    }
+
+    .vertical-nav .zh {
+      font-size: 0.95rem;
+    }
+
+    .nav-desc {
+      max-width: 28ch;
+    }
+  }
+</style>

@@ -1,0 +1,264 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+const allPoetry = await getCollection('poetry');
+const sortedPoetry = allPoetry.sort((a: CollectionEntry<'poetry'>, b: CollectionEntry<'poetry'>) => b.data.date.getTime() - a.data.date.getTime());
+
+// 获取URL查询参数中的tag
+const urlParams = new URL(Astro.request.url).searchParams;
+const selectedTag = urlParams.get('tag');
+
+// 根据tag过滤文章
+const filteredPoetry = selectedTag 
+  ? sortedPoetry.filter((entry: CollectionEntry<'poetry'>) => 
+      entry.data.tags?.includes(selectedTag)
+    )
+  : sortedPoetry;
+
+// 获取所有独特的tag用于显示tag云
+const allTags = new Set<string>();
+sortedPoetry.forEach((entry: CollectionEntry<'poetry'>) => {
+  entry.data.tags?.forEach(tag => allTags.add(tag));
+});
+const uniqueTags = Array.from(allTags).sort();
+---
+
+<BaseLayout title="Poetry & Prose 穑斋诗文 | michaelwong.space">
+
+  <section class="poetry-container">
+    
+    <h1 class="page-title">
+      <span id="typewriter"></span>
+    </h1>
+
+    <p class="page-subtitle">
+      自号穑斋主人。
+    </p>
+
+    <div class="divider"></div>
+
+    <!-- Tag 云 -->
+    {uniqueTags.length > 0 && (
+      <div class="tag-cloud">
+        <a href="/poetry-prose" class={`tag-cloud-item ${!selectedTag ? 'active' : ''}`}>全部</a>
+        {uniqueTags.map((tag: string) => (
+          <a href={`/poetry-prose?tag=${encodeURIComponent(tag)}`} class={`tag-cloud-item ${selectedTag === tag ? 'active' : ''}`}>
+            {tag}
+          </a>
+        ))}
+      </div>
+      <p class="tag-info">
+        {selectedTag ? `共 ${filteredPoetry.length} 篇含有 "${selectedTag}" 标签的文章` : `共 ${sortedPoetry.length} 篇文章`}
+      </p>
+    )}
+
+    <!-- 动态文章列表 -->
+    {filteredPoetry.map((entry: CollectionEntry<'poetry'>) => (
+      <a href={`/poetry/${entry.slug}`} class="poem">
+        <h2 class="poem-title">{entry.data.title}</h2>
+        <p class="poem-meta">
+          {entry.data.date.getFullYear()}年{entry.data.date.getMonth() + 1}月{entry.data.date.getDate()}日
+          {entry.data.category && <span class="poem-category">{entry.data.category}</span>}
+        </p>
+        {entry.data.excerpt && <p class="poem-excerpt">{entry.data.excerpt}</p>}
+        {entry.data.tags && entry.data.tags.length > 0 && (
+          <div class="poem-tags">
+            {entry.data.tags.map((tag: string) => (
+              <span class="poem-tag">#{tag}</span>
+            ))}
+          </div>
+        )}
+      </a>
+    ))}
+
+  </section>
+
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <script>
+    declare const Typed: any;
+    document.addEventListener('DOMContentLoaded', () => {
+      new Typed('#typewriter', {
+        strings: ["Poetry &amp; Prose 穑斋诗文"],
+        typeSpeed: 80,
+        startDelay: 300,
+        backDelay: 2500,
+        loop: false,
+        showCursor: true
+      });
+    });
+  </script>
+</BaseLayout>
+
+<style>
+  .poetry-container {
+    max-width: 680px;
+    margin-left: 10vw;
+    padding-top: 15vh; /* 为标题上方留白 */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .page-title {
+    font-family: 'Bodoni Moda', 'Noto Serif SC', serif;
+    font-size: 3rem;
+    font-weight: 500;
+    margin: 0 0 0.5rem 0;
+    height: 3.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .page-title .typed-cursor {
+    font-size: 3rem;
+    color: var(--text-primary);
+    font-family: 'Bodoni Moda', serif;
+    font-weight: 300;
+    animation: typedjsBlink 0.7s infinite;
+  }
+
+  @keyframes typedjsBlink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+  }
+
+  .page-subtitle {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 2.5rem;
+  }
+
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: rgba(255,255,255,0.3);
+    margin-bottom: 3rem;
+  }
+
+  .tag-cloud {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .tag-cloud-item {
+    padding: 0.4rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .tag-cloud-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.95);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  .tag-cloud-item.active {
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.95);
+    border-color: rgba(255, 255, 255, 0.5);
+    font-weight: 500;
+  }
+
+  .tag-info {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 2.5rem;
+    font-style: italic;
+  }
+
+  .poem {
+    margin-bottom: 3.5rem;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+  }
+
+  .poem-title {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .poem:hover .poem-title {
+    color: #ffffff;
+    transform: translateX(4px);
+  }
+
+  .poem-meta {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .poem-category {
+    padding: 0.2rem 0.5rem;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 2px;
+    font-size: 0.7rem;
+  }
+
+  .poem-excerpt {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .poem-tags {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-top: 0.8rem;
+  }
+
+  .poem-tag {
+    padding: 0.2rem 0.45rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.6);
+    white-space: nowrap;
+  }
+
+  .poem:hover .poem-tag {
+    background: rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  @media (max-width: 768px) {
+    .poetry-container {
+      margin-left: 5vw;
+      padding-top: 10vh;
+    }
+
+    .page-title {
+      font-size: 2rem;
+      height: 2.5rem;
+    }
+
+    .page-title .typed-cursor {
+      font-size: 2rem;
+    }
+  }
+</style>
