@@ -1,4 +1,20 @@
 ---
+import '../styles/global.css';
+
+const pageTitle = "关于 Michael Wong";
+
+const identity = {
+  firstName: "Michael",
+  country: "中国",
+  occupation: "南开大学本科生",
+  hobbies: ["视频剪辑", "诗词创作", "Penbeat"],
+};
+
+const skills = ["C++", "Algorithms", "Data Structures", "Mathematical Analysis", "Astro", "Algebra"];
+
+const skillColor = "crimson";
+const fontWeight = "bold";
+const textCase = "uppercase";
 
 ---
 
@@ -9,7 +25,18 @@
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>{pageTitle}</title>
+        <style define:vars={{ skillColor, fontWeight, textCase }}>
+			h1 {
+				color: purple;
+				font-size: 4rem;
+			}
+            .skill {
+                color: var(--skillColor);
+                font-weight: var(--fontWeight);
+                text-transform: var(--textCase);
+            }
+		</style>
 	</head>
 	<body>
 
@@ -17,10 +44,23 @@
         <a href="/about">关于</a>
 		<a href="/blog">博客</a>
 
-		<h1>关于 Michael Wong </h1>
+		<h1>{pageTitle}</h1>
         <h2>以及这个网站</h2>
 
         <p>这里是 Michael Wong 的个人小站。用于展示他的作品。</p>
+
+        <p>以下是关于我的几个事实：</p>
+        <ul>
+            <li>我的名字是{identity.firstName}.</li>
+            <li>我住在{identity.country}。我的职业是{identity.occupation}。</li>
+            {identity.hobbies.length >= 2 &&
+                <li>我的两个习惯：{identity.hobbies[0]}和{identity.hobbies[1]}</li>
+            }
+        </ul>
+        <p>我的技能是：</p>
+        <ul>
+          {skills.map((skill) => <li class="skill">{skill}</li>)}
+        </ul>
 
         <p>2026 Michael Wong. 保留所有权利。</p>
 	</body>
