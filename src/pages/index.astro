@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>michaelwong.space</title>
+    <title>欢迎来到 michaelwong.space</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
@@ -23,24 +23,47 @@
       </div>
 
       <nav class="vertical-nav">
-        <a href="/poetry">
-          <span class="en">POETRY & PROSE</span>
-          <span class="zh">穑斋诗文</span>
+        <a href="/poetry&prose" class="nav-item">
+          <div class="nav-title">
+            <span class="en">POETRY & PROSE</span>
+            <span class="zh">穑斋诗文</span>
+          </div>
+          <div class="nav-desc">
+            二两碘酊作为“穑斋主人”的诗文创作空间。<br>
+            记录了他的诗词作品和一些随笔。
+          </div>
         </a>
 
-        <a href="/programming">
-          <span class="en">PROGRAMMING</span>
-          <span class="zh">程序设计</span>
+        <a href="/programming" class="nav-item">
+          <div class="nav-title">
+            <span class="en">PROGRAMMING</span>
+            <span class="zh">程序设计</span>
+          </div>
+          <div class="nav-desc">
+            二两碘酊关于程序设计的一切。<br>
+            从 OI 到 ACM，从算法到数据结构，<br>从学习笔记到授课教案……
+          </div>
         </a>
 
-        <a href="/archive">
-          <span class="en">ARCHIVE</span>
-          <span class="zh">个人档案</span>
+        <a href="/archive" class="nav-item">
+          <div class="nav-title">
+            <span class="en">ARCHIVE</span>
+            <span class="zh">个人档案</span>
+          </div>
+          <div class="nav-desc">
+            个人档案馆。<br>
+            关于回忆录，关于创作的视频作品，<br>关于二两碘酊的琐碎线索。
+          </div>
         </a>
 
-        <a href="/about">
-          <span class="en">ABOUT</span>
-          <span class="zh">关于</span>
+        <a href="/about" class="nav-item">
+          <div class="nav-title">
+            <span class="en">ABOUT</span>
+            <span class="zh">关于</span>
+          </div>
+          <div class="nav-desc">
+            想快速了解我？<br>想知道更多？
+          </div>
         </a>
       </nav>
     </div>
@@ -224,6 +247,10 @@
     .vertical-nav .zh {
       font-size: 0.95rem;
     }
+    /* 移动端收窄描述列宽度 */
+    .nav-desc {
+      max-width: 28ch;
+    }
   }
 
 
@@ -258,39 +285,67 @@
 .vertical-nav {
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: 24px;
   text-align: right;
 }
 
-.vertical-nav a {
+.nav-item {
   text-decoration: none;
-  transition: all 0.3s ease;
+  display: block;
+  transition: all 0.4s ease;
 }
 
-  .vertical-nav .en {
+.nav-title .en {
   display: block;
   font-family: 'Noto Sans SC', sans-serif;
-  font-size: 1rem;
-  letter-spacing: 0.22em;
-  color: rgba(255,255,255,0.65);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.55);
+  transition: color 0.3s ease;
 }
 
-  .vertical-nav .zh {
+.nav-title .zh {
   display: block;
   font-family: 'Noto Sans SC', sans-serif;
-  font-size: 1.05rem;
-  margin-top: 6px;
-  color: rgba(255,255,255,0.45);
+  font-size: 0.8rem;
+  margin-top: 4px;
+  color: rgba(255,255,255,0.35);
+  transition: color 0.3s ease;
 }
 
-.vertical-nav a:hover .en {
+/* 描述区默认隐藏 */
+.nav-desc {
+  max-height: 0;
+  overflow: hidden;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.4);
+  margin-top: 0;
+  transition: max-height 0.4s ease, margin-top 0.4s ease, opacity 0.4s ease;
+  opacity: 0;
+  white-space: normal; /* 允许换行 */
+  overflow-wrap: anywhere; /* 必要时在任意位置断行，支持中英文 */
+  word-break: break-word; /* 对中文长词友好 */
+  max-width: 35ch; /* 每行最多约 44 字符（ch 单位基于数字宽度） */
+  hyphens: auto;
+}
+
+/* hover 展开 */
+.nav-item:hover .nav-desc {
+  max-height: 80px;   /* 根据内容长度调整 */
+  margin-top: 12px;
+  opacity: 1;
+}
+
+/* hover 强化标题 */
+.nav-item:hover .en {
   color: #ffffff;
-  transform: translateX(-3px);
 }
 
-.vertical-nav a:hover .zh {
+.nav-item:hover .zh {
   color: rgba(255,255,255,0.75);
 }
+
 
 
 
