@@ -1,24 +1,141 @@
 ---
-import '../styles/global.css';
-
-const pageTitle = "Michael Wong 的 Astro 站点";
+// src/pages/index.astro
 ---
 
-<html lang="zh-cn">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-	</head>
-	<body>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>michaelwong.space</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  </head>
+  <body>
+    <div class="light-source blue-light"></div>
+    <div class="light-source red-light"></div>
 
-		<a href="/">首页</a>
-        <a href="/about">关于</a>
-		<a href="/blog">博客</a>
+    <main class="container">
+      <h1 class="title">
+        <span id="typewriter"></span>
+      </h1>
+      <p class="subtitle">钟爱各类视听逻辑文字美学与计算机艺术的热血青年</p>
+    </main>
 
-		<h1>{pageTitle}</h1>
-	</body>
+    <script>
+      declare const Typed: any;
+      // 初始化打字机效果
+      document.addEventListener('DOMContentLoaded', () => {
+        new Typed('#typewriter', {
+          strings: [
+            'michaelwong.space',
+            'space of <i>poetry</i>.',
+            'space of <i>algorithms</i>.',
+            'space of <i>reflections</i>.',
+            'space of <b><i>me</i></b>.'
+          ],
+          typeSpeed: 60,        // 打字速度 (ms)
+          backSpeed: 40,        // 删除速度 (ms)
+          backDelay: 2500,      // 每句话打完后的停留时间
+          startDelay: 500,      // 页面加载后的初始延迟
+          loop: true,           // 无限循环
+          smartBackspace: false // 设置为 false 确保每次都完全删除再重新输入
+        });
+      });
+    </script>
+  </body>
 </html>
+
+<style>
+  :root {
+    --bg-color: #000000;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    /* 备用字体栈 */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    height: 100vh;
+    overflow: hidden; /* 隐藏光源溢出可能导致的滚动条 */
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    position: relative;
+  }
+
+  /* --- 环境光源特效 --- */
+  .light-source {
+    position: absolute;
+    top: -10vw;
+    left: -10vw;
+    border-radius: 50%;
+    filter: blur(120px); /* 制造极度柔和的光晕发散效果 */
+    z-index: 0;
+    pointer-events: none; /* 防止遮挡鼠标点击 */
+  }
+
+  .blue-light {
+    width: 45vw;
+    height: 45vw;
+    background-color: #00094b;
+    opacity: 0.9;
+  }
+
+  .red-light {
+    width: 35vw;
+    height: 35vw;
+    background-color: #6d0e11;
+    top: 8vw; /* 稍微错开位置，形成交错融合 */
+    left: -5vw;
+    opacity: 0.7;
+    mix-blend-mode: screen; /* 滤色模式让光效叠加更自然 */
+  }
+
+  /* --- 文本内容区 --- */
+  .container {
+    position: relative;
+    z-index: 1; /* 确保文字在光效之上 */
+    padding-left: 10vw; /* 参考你的示意图，文字靠左对齐 */
+    max-width: 1200px;
+  }
+
+  .title {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 5rem; 
+    font-weight: 500; /* 对应 Medium */
+    margin: 0 0 1.5rem 0;
+    height: 6rem; /* 固定高度防止打字换行时页面抖动 */
+  }
+
+  /* 覆盖 Typed.js 生成的光标样式，使其匹配大标题字体 */
+  :global(.typed-cursor) {
+    font-size: 5rem;
+    color: var(--text-primary);
+    font-family: 'Bodoni Moda', serif;
+    font-weight: 300;
+    animation: typedjsBlink 0.7s infinite;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.3em; /* 增加字距以体现高级感 */
+    margin: 0;
+    font-weight: 300;
+  }
+
+  /* --- 响应式设计（适配手机端） --- */
+  @media (max-width: 768px) {
+    .title { font-size: 2.5rem; height: 3.5rem; }
+    :global(.typed-cursor) { font-size: 2.5rem; }
+    .subtitle { font-size: 0.8rem; letter-spacing: 0.15em; line-height: 1.5; }
+    .container { padding-left: 5vw; padding-right: 5vw; }
+    .blue-light { width: 80vw; height: 80vw; }
+    .red-light { width: 60vw; height: 60vw; }
+  }
+</style>
