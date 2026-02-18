@@ -16,6 +16,37 @@
     <div class="light-source blue-light"></div>
     <div class="light-source red-light"></div>
 
+    <div class="brand-nav">
+      <div class="brand">
+        <!-- 这里替换成你的图床链接 -->
+        <img src="https://pic1.imgdb.cn/item/6995d39a556e27f1c93a3414.png" alt="字标与徽标" class="logo" />
+      </div>
+
+      <nav class="vertical-nav">
+        <a href="/poetry">
+          <span class="en">POETRY & PROSE</span>
+          <span class="zh">穑斋诗文</span>
+        </a>
+
+        <a href="/programming">
+          <span class="en">PROGRAMMING</span>
+          <span class="zh">程序设计</span>
+        </a>
+
+        <a href="/archive">
+          <span class="en">ARCHIVE</span>
+          <span class="zh">个人档案</span>
+        </a>
+
+        <a href="/about">
+          <span class="en">ABOUT</span>
+          <span class="zh">关于</span>
+        </a>
+      </nav>
+    </div>
+
+
+
     <main class="container">
       <h1 class="title">
         <span id="typewriter"></span>
@@ -172,5 +203,95 @@
     .container { padding-left: 5vw; padding-right: 5vw; }
     .blue-light { width: 80vw; height: 80vw; }
     .red-light { width: 60vw; height: 60vw; }
+    .brand-nav {
+      top: 20px;
+      right: 20px;
+    }
+
+    .logo {
+      height: 55px;
+      transform: translateX(8px);
+    }
+
+    .vertical-nav {
+      gap: 24px;
+    }
+
+    .vertical-nav .en {
+      font-size: 0.9rem;
+    }
+
+    .vertical-nav .zh {
+      font-size: 0.95rem;
+    }
   }
+
+
+  /* ===== 右上角品牌与导航 ===== */
+
+.brand-nav {
+  position: absolute;
+  top: 40px;
+  right: 60px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/* 字标 + LOGO */
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-bottom: 27px; /* 减小下边距，使导航上移 */
+}
+
+
+.logo {
+  height: 55px; /* 放大徽标 */
+  opacity: 0.85;
+  transform: translateX(14px); /* 向右移动 */
+}
+
+/* 竖排导航 */
+.vertical-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  text-align: right;
+}
+
+.vertical-nav a {
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+  .vertical-nav .en {
+  display: block;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.22em;
+  color: rgba(255,255,255,0.65);
+}
+
+  .vertical-nav .zh {
+  display: block;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 1.05rem;
+  margin-top: 6px;
+  color: rgba(255,255,255,0.45);
+}
+
+.vertical-nav a:hover .en {
+  color: #ffffff;
+  transform: translateX(-3px);
+}
+
+.vertical-nav a:hover .zh {
+  color: rgba(255,255,255,0.75);
+}
+
+
+
 </style>
