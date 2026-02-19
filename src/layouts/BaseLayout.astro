@@ -125,7 +125,7 @@ const { title = "michaelwong.space" } = Astro.props;
 
   /* --- 环境光源特效 --- */
   .light-source {
-    position: absolute;
+    position: fixed;
     border-radius: 50%;
     filter: blur(120px);
     z-index: 0;
@@ -186,7 +186,7 @@ const { title = "michaelwong.space" } = Astro.props;
 
   /* --- 右上角品牌与导航 --- */
   .brand-nav {
-    position: absolute;
+    position: fixed;
     top: 40px;
     right: 60px;
     z-index: 2;

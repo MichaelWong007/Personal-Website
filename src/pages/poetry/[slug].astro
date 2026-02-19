@@ -1,4 +1,4 @@
----
+﻿---
 import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
@@ -16,47 +16,65 @@ interface Props {
 
 const { entry } = Astro.props as Props;
 const { Content } = await entry.render();
-const { title, date, category, tags } = entry.data;
+const { title, date, category, tags, coverImage } = entry.data;
 
-// 格式化日期 (格式: day.month.year)
-const formattedDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
+const formattedDate = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
 ---
 
 <BaseLayout title={`${title} | michaelwong.space`}>
-  <article class="poetry-article">
-    <header class="article-header">
-      <h1 class="article-title">{title}</h1>
-      <div class="article-meta">
-        <span class="article-date">{formattedDate}</span>
-        {category && <span class="article-category">{category}</span>}
-      </div>
-      {tags && tags.length > 0 && (
-        <div class="article-tags">
-          {tags.map((tag: string) => (
-            <a href={`/poetry?tag=${encodeURIComponent(tag)}`} class="tag">
-              #{tag}
-            </a>
-          ))}
+  <div class="poetry-layout">
+    <article class="poetry-article">
+      <header class="article-header">
+        <h1 class="article-title">{title}</h1>
+        <div class="article-meta">
+          <span class="article-date">{formattedDate}</span>
+          {category && <span class="article-category">{category}</span>}
         </div>
-      )}
-    </header>
+        {tags && tags.length > 0 && (
+          <div class="article-tags">
+            {tags.map((tag: string) => (
+              <a href={`/poetry?tag=${encodeURIComponent(tag)}`} class="tag">
+                #{tag}
+              </a>
+            ))}
+          </div>
+        )}
+      </header>
 
-    <div class="article-content">
-      <Content />
-    </div>
+      <div class="article-content">
+        <Content />
+      </div>
 
-    <footer class="article-footer">
-      <a href="/poetry-prose" class="back-link">← 返回诗文列表</a>
-    </footer>
-  </article>
+      <footer class="article-footer">
+        <a href="/poetry-prose" class="back-link">← 返回列表</a>
+      </footer>
+    </article>
+
+    {coverImage && (
+      <aside class="article-cover">
+        <img src={coverImage} alt={`${title} 封面`} loading="lazy" />
+      </aside>
+    )}
+  </div>
 </BaseLayout>
 
 <style>
+  .poetry-layout {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15vh 5vw 0;
+    position: relative;
+    left: -24px;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: minmax(0, 680px) minmax(240px, 360px);
+    gap: 3.4rem;
+    align-items: start;
+    justify-content: space-between;
+  }
+
   .poetry-article {
     max-width: 680px;
-    margin-left: 10vw;
-    padding-top: 15vh;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
   }
@@ -68,7 +86,7 @@ const formattedDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYe
   .article-title {
     font-family: 'Bodoni Moda', 'Noto Serif SC', serif;
     font-size: 3rem;
-    font-weight: 500;
+    font-weight: 750;
     margin: 0 0 1rem 0;
     letter-spacing: 0.05em;
   }
@@ -82,10 +100,15 @@ const formattedDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYe
   }
 
   .article-date {
+    display: inline-flex;
+    align-items: center;
     text-transform: uppercase;
+    font-size: 1rem;
   }
 
   .article-category {
+    display: inline-flex;
+    align-items: center;
     padding: 0.25rem 0.75rem;
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 2px;
@@ -120,8 +143,19 @@ const formattedDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYe
     font-family: 'Noto Sans SC', sans-serif;
     font-size: 1rem;
     line-height: 1.8;
+    letter-spacing: 0.08em;
     color: rgba(255, 255, 255, 0.85);
     margin-bottom: 3rem;
+  }
+
+  .article-content :global(a) {
+    color: #8ecbff;
+    text-decoration-color: rgba(142, 203, 255, 0.6);
+    text-underline-offset: 0.15em;
+  }
+
+  .article-content :global(a:hover) {
+    color: #b8e1ff;
   }
 
   .article-content :global(p) {
@@ -177,6 +211,16 @@ const formattedDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYe
   }
 
   .back-link {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    z-index: 20;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.4rem 0.7rem;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(2px);
     color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
     transition: all 0.3s ease;
@@ -187,10 +231,48 @@ const formattedDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYe
     transform: translateX(-4px);
   }
 
-  @media (max-width: 768px) {
-    .poetry-article {
-      margin-left: 5vw;
+  .article-cover {
+    position: static;
+    margin-left: 0;
+    transform: translateX(-78px);
+  }
+
+  .article-cover img {
+    width: 100%;
+    display: block;
+    border-radius: 6px;
+  }
+
+  @media (max-width: 1100px) {
+    .poetry-layout {
+      display: block;
       padding-top: 10vh;
+      left: 0;
+    }
+
+    .poetry-article {
+      max-width: 680px;
+    }
+
+    .article-cover {
+      position: static;
+      margin-left: 0;
+      max-width: 680px;
+      margin-top: 1.5rem;
+      transform: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .poetry-layout {
+      margin: 0 auto;
+      padding: 10vh 5vw 0;
+      display: block;
+      left: 0;
+    }
+
+    .poetry-article {
+      max-width: none;
     }
 
     .article-title {
@@ -200,6 +282,19 @@ const formattedDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYe
     .article-meta {
       flex-direction: column;
       gap: 0.5rem;
+    }
+
+    .article-cover {
+      position: static;
+      margin-left: 0;
+      margin-top: 1.5rem;
+      max-width: none;
+      transform: none;
+    }
+
+    .back-link {
+      top: 16px;
+      left: 16px;
     }
   }
 </style>

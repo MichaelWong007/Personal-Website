@@ -1,11 +1,15 @@
-<div class="verse">
+---
+const { align = 'center' } = Astro.props;
+const textAlign = align === 'left' || align === 'right' ? align : 'center';
+---
+
+<div class="verse" style={`text-align: ${textAlign};`}>
   <slot />
 </div>
 
 <style>
   .verse {
-    text-align: center;
-    margin: 3rem 0;
+    margin: -1.8rem 0 -2.2rem;
     line-height: 2;
     white-space: pre-wrap;
   }
