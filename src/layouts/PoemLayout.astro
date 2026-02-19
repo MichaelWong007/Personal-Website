@@ -1,0 +1,57 @@
+---
+const { title, date } = Astro.props;
+---
+
+<article class="poem-container">
+
+  <header class="poem-header">
+    <h1 class="poem-title">{title}</h1>
+    <p class="poem-date">{date}</p>
+  </header>
+
+  <div class="poem-content">
+    <slot />
+  </div>
+
+</article>
+
+<style>
+    .poem-container {
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 120px 20px 80px 20px;
+        font-family: "Source Serif SC", serif;
+    }
+
+    .poem-title {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 500;
+        font-weight: bold;
+        margin-bottom: 0.6rem;
+        letter-spacing: 0.08em;
+        
+        display: inline-block;
+        transform: scaleX(0.9);
+        transform-origin: center;
+    }
+
+    .poem-date {
+        text-align: center;
+        font-size: 0.9rem;
+        letter-spacing: 0.2em;
+        color: rgba(255,255,255,0.5);
+        margin-bottom: 3rem;
+    }
+
+    .poem-content {
+        text-align: left;
+        line-height: 2;
+        font-size: 1.05rem;
+        letter-spacing: 0.08em;
+    }
+
+
+
+</style>

@@ -35,7 +35,7 @@ const { title = "michaelwong.space" } = Astro.props;
         <a href="/poetry-prose" class="nav-item">
           <div class="nav-title">
             <span class="en">POETRY & PROSE</span>
-            <span class="zh">穑斋诗文</span>
+            <span class="zh">碘伏诗文</span>
           </div>
           <div class="nav-desc">
             二两碘酊作为"穑斋主人"的诗文创作空间。<br>
@@ -267,6 +267,13 @@ const { title = "michaelwong.space" } = Astro.props;
 
   .nav-item:hover .zh {
     color: rgba(255,255,255,0.75);
+  }
+
+  /* --- 全局图片样式 --- */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
   }
 
   /* --- 页面内容区 --- */
