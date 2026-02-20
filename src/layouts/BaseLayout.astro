@@ -1,5 +1,5 @@
 ﻿---
-const { title = "michaelwong.space" } = Astro.props;
+const { title = "michaelwong.space", archiveExhibitLights = false } = Astro.props;
 ---
 
 <html lang="zh-CN">
@@ -19,8 +19,23 @@ const { title = "michaelwong.space" } = Astro.props;
 
   <body>
     <!-- 光源 -->
-    <div class="light-source blue-light"></div>
-    <div class="light-source red-light"></div>
+    {archiveExhibitLights ? (
+      <div class="exhibit-light-layer" aria-hidden="true">
+        <div class="exhibit-light exhibit-blue blue-1"></div>
+        <div class="exhibit-light exhibit-blue blue-2"></div>
+        <div class="exhibit-light exhibit-blue blue-3"></div>
+        <div class="exhibit-light exhibit-blue blue-4"></div>
+        <div class="exhibit-light exhibit-red red-1"></div>
+        <div class="exhibit-light exhibit-red red-2"></div>
+        <div class="exhibit-light exhibit-red red-3"></div>
+        <div class="exhibit-light exhibit-red red-4"></div>
+      </div>
+    ) : (
+      <>
+        <div class="light-source blue-light"></div>
+        <div class="light-source red-light"></div>
+      </>
+    )}
 
     <!-- 右上角品牌与导航 -->
     <div class="brand-nav">
@@ -151,6 +166,71 @@ const { title = "michaelwong.space" } = Astro.props;
     top: 5vw;
     right: 0vw;
     animation: moveRedLights 10s ease-in-out infinite;
+  }
+
+  .exhibit-light-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .exhibit-light {
+    position: absolute;
+    width: 26vw;
+    height: 34vw;
+    border-radius: 50%;
+    filter: blur(95px);
+    opacity: 0.55;
+    transform-origin: center center;
+    will-change: transform, opacity;
+  }
+
+  .exhibit-blue {
+    background: radial-gradient(circle at 50% 48%, rgba(61, 117, 241, 0.85) 0%, rgba(4, 26, 92, 0.44) 48%, rgba(4, 26, 92, 0) 100%);
+    mix-blend-mode: screen;
+    top: -16vw;
+    animation: exhibitBlueSweep 11s ease-in-out infinite;
+  }
+
+  .blue-1 { left: -2vw; animation-delay: 0s; }
+  .blue-2 { left: 20vw; animation-delay: -2.2s; }
+  .blue-3 { left: 44vw; animation-delay: -4.4s; }
+  .blue-4 { left: 68vw; animation-delay: -6.6s; }
+
+  .exhibit-red {
+    background: radial-gradient(circle at 50% 52%, rgba(209, 56, 68, 0.82) 0%, rgba(107, 13, 22, 0.46) 50%, rgba(107, 13, 22, 0) 100%);
+    mix-blend-mode: screen;
+    bottom: -17vw;
+    animation: exhibitRedSweep 12.5s ease-in-out infinite;
+  }
+
+  .red-1 { left: 4vw; animation-delay: -1.4s; }
+  .red-2 { left: 27vw; animation-delay: -3.6s; }
+  .red-3 { left: 50vw; animation-delay: -5.8s; }
+  .red-4 { left: 73vw; animation-delay: -8s; }
+
+  @keyframes exhibitBlueSweep {
+    0%, 100% {
+      transform: translateY(0) scale(1) rotate(7deg);
+      opacity: 0.44;
+    }
+    50% {
+      transform: translateY(3vw) scale(1.08) rotate(-10deg);
+      opacity: 0.62;
+    }
+  }
+
+  @keyframes exhibitRedSweep {
+    0%, 100% {
+      transform: translateY(0) scale(1) rotate(-8deg);
+      opacity: 0.42;
+    }
+    50% {
+      transform: translateY(-4vw) scale(1.1) rotate(10deg);
+      opacity: 0.61;
+    }
   }
 
   /* 光源动画 */
@@ -312,5 +392,22 @@ const { title = "michaelwong.space" } = Astro.props;
     .nav-desc {
       max-width: 28ch;
     }
+
+    .exhibit-light {
+      width: 42vw;
+      height: 52vw;
+      filter: blur(70px);
+      opacity: 0.48;
+    }
+
+    .blue-1 { left: -18vw; }
+    .blue-2 { left: 8vw; }
+    .blue-3 { left: 36vw; }
+    .blue-4 { left: 64vw; }
+
+    .red-1 { left: -10vw; }
+    .red-2 { left: 16vw; }
+    .red-3 { left: 44vw; }
+    .red-4 { left: 72vw; }
   }
 </style>

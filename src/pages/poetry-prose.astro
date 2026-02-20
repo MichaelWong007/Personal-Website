@@ -28,9 +28,12 @@ const uniqueTags = Array.from(allTags).sort();
 
   <section class="poetry-container">
     
-    <h1 class="page-title">
-      <span id="typewriter"></span>
-    </h1>
+    <div class="page-title-row">
+      <h1 class="page-title">
+        <span id="typewriter"></span>
+      </h1>
+      <span class="page-title-zh">碘伏诗文</span>
+    </div>
 
     <p class="page-subtitle">
       自号穑斋主人｜与“碘伏漫谈”公众号“碘伏诗文”栏目同步<br>
@@ -81,7 +84,7 @@ const uniqueTags = Array.from(allTags).sort();
     declare const Typed: any;
     document.addEventListener('DOMContentLoaded', () => {
       new Typed('#typewriter', {
-        strings: ["Poetry &amp; Prose 碘伏诗文"],
+        strings: ["Poetry &amp; Prose"],
         typeSpeed: 80,
         startDelay: 300,
         backDelay: 2500,
@@ -103,6 +106,14 @@ const uniqueTags = Array.from(allTags).sort();
     justify-content: flex-start;
   }
 
+  .page-title-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+    margin: 0 0 0.5rem 0;
+  }
+
   .page-title {
     font-family: 'Bodoni Moda', 'Noto Serif SC', serif;
     font-size: 3rem;
@@ -110,9 +121,19 @@ const uniqueTags = Array.from(allTags).sort();
     font-variation-settings: "opsz" 24, "wght" 420;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    margin: 0 0 0.5rem 0;
+    margin: 0;
     height: 3.5rem;
     letter-spacing: 0.05em;
+  }
+
+  .page-title-zh {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 0.35em;
+    color: rgba(255,255,255,0.85);
+    white-space: nowrap;
+    margin-top: 2rem;
   }
 
   .page-title .typed-cursor {
@@ -134,6 +155,7 @@ const uniqueTags = Array.from(allTags).sort();
     letter-spacing: 0.12em;
     color: rgba(255,255,255,0.5);
     margin-bottom: 1rem;
+    margin-top: 0.2rem;
   }
 
   .subtitle-cloud-btn {
@@ -280,9 +302,17 @@ const uniqueTags = Array.from(allTags).sort();
       padding-top: 10vh;
     }
 
+    .page-title-row {
+      gap: 0.15rem;
+    }
+
     .page-title {
       font-size: 2rem;
       height: 2.5rem;
+    }
+
+    .page-title-zh {
+      font-size: 1rem;
     }
 
     .page-title .typed-cursor {
