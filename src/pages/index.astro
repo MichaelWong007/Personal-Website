@@ -16,7 +16,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     document.addEventListener("DOMContentLoaded", () => {
       new Typed("#typewriter", {
         strings: [
-          "michaelwong.space",
+          "michaelwong.space^3000",
           "space of <i>poetry</i>.",
           "space of <i>algorithms</i>.",
           "space of <i>reflections</i>.",
@@ -49,6 +49,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     font-family: "Bodoni Moda", serif;
     font-size: 5rem;
     font-weight: 500;
+    font-variation-settings: "opsz" 36, "wght" 500;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
     margin: 0 0 1.5rem 0;
     height: 6rem;
   }

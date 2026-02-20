@@ -34,8 +34,9 @@ const uniqueTags = Array.from(allTags).sort();
 
     <p class="page-subtitle">
       自号穑斋主人｜与“碘伏漫谈”公众号“碘伏诗文”栏目同步<br>
-      专题式收录诗文作品，支持搜索功能。
+      专题式收录诗文作品｜单体查找与欣赏建议进入诗云
     </p>
+    <a href="/poem-cloud" class="subtitle-cloud-btn">进入诗云 →</a>
 
     <div class="divider"></div>
 
@@ -105,7 +106,10 @@ const uniqueTags = Array.from(allTags).sort();
   .page-title {
     font-family: 'Bodoni Moda', 'Noto Serif SC', serif;
     font-size: 3rem;
-    font-weight: 500;
+    font-weight: 420;
+    font-variation-settings: "opsz" 24, "wght" 420;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
     margin: 0 0 0.5rem 0;
     height: 3.5rem;
     letter-spacing: 0.05em;
@@ -129,7 +133,27 @@ const uniqueTags = Array.from(allTags).sort();
     font-size: 1.2rem;
     letter-spacing: 0.12em;
     color: rgba(255,255,255,0.5);
-    margin-bottom: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .subtitle-cloud-btn {
+    align-self: flex-start;
+    display: inline-block;
+    margin-bottom: 2rem;
+    padding: 0.28rem 0.7rem;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 3px;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .subtitle-cloud-btn:hover {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.08);
   }
 
   .divider {
@@ -191,7 +215,10 @@ const uniqueTags = Array.from(allTags).sort();
   .poem-title {
     font-family: 'Bodoni Moda', serif;
     font-size: 1.8rem;
-    font-weight: 500;
+    font-weight: 420;
+    font-variation-settings: "opsz" 48, "wght" 420;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
     margin-bottom: 0.5rem;
     transition: all 0.3s ease;
   }
