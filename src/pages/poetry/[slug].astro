@@ -22,6 +22,11 @@ const formattedDate = `${date.getFullYear()}年${date.getMonth() + 1}月${date.g
 ---
 
 <BaseLayout title={`${title} | michaelwong.space`}>
+  <div class="poetry-bg-lights" aria-hidden="true">
+    <div class="light-source blue-light-large"></div>
+    <div class="light-source red-light-small"></div>
+  </div>
+  
   <div class="poetry-layout">
     <article class="poetry-article">
       <header class="article-header">
@@ -59,12 +64,65 @@ const formattedDate = `${date.getFullYear()}年${date.getMonth() + 1}月${date.g
 </BaseLayout>
 
 <style>
+  :global(.light-source) {
+    display: none;
+  }
+  .poetry-bg-lights {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .blue-light-large {
+    display: block !important;
+    position: absolute;
+    width: 65vw;
+    height: 65vw;
+    background-color: #00094b;
+    opacity: 0.6;
+    mix-blend-mode: screen;
+    top: -200px;
+    left: -200px;
+    border-radius: 50%;
+    filter: blur(160px);
+    animation: moveBlueLightLarge 12s ease-in-out infinite;
+  }
+  .red-light-small {
+    display: block !important;
+    position: absolute;
+    width: 35vw;
+    height: 35vw;
+    background-color: #6d0e11;
+    opacity: 0.8;
+    mix-blend-mode: screen;
+    bottom: -50px;
+    left: 40vw; /* Position to the right but lower */
+    border-radius: 50%;
+    filter: blur(100px);
+    animation: moveRedLightSmall 10s ease-in-out infinite;
+  }
+
+  @keyframes moveBlueLightLarge {
+    0% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+    50% { transform: translate(50px, 50px) scale(1.1); opacity: 0.5; }
+    100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  }
+
+  @keyframes moveRedLightSmall {
+    0% { transform: translate(0, 0) scale(1); opacity: 0.8; }
+    25% { transform: translate(50px, -40px) scale(1.1); opacity: 0.7; }
+    50% { transform: translate(20px, -80px) scale(0.9); opacity: 0.85; }
+    75% { transform: translate(-30px, -50px) scale(1.05); opacity: 0.75; }
+    100% { transform: translate(0, 0) scale(1); opacity: 0.8; }
+  }
+
   .poetry-layout {
     max-width: 1200px;
     margin: 0 auto;
     padding: 15vh 5vw 0;
     position: relative;
     left: -24px;
+    z-index: 1;
     min-height: 100vh;
     display: grid;
     grid-template-columns: minmax(0, 680px) minmax(240px, 360px);
