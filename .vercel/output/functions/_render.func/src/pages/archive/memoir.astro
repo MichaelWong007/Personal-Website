@@ -1,0 +1,873 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const title = "走过人生的复平面 | michaelwong.space";
+---
+
+<BaseLayout title={title}>
+  <div class="memoir-bg-lights" aria-hidden="true">
+    <div class="light-source red-light-large"></div>
+  </div>
+  
+  <a href="/archive" class="back-link">← 返回</a>
+  
+  <section class="memoir-container">
+    <div class="content-wrapper">
+      <div class="header-section">
+        <div class="meta-info">
+          <span class="time-interval">8.1.2022 - 11.18.2023</span>
+          <h1 class="page-title">走过人生的复平面</h1>
+          <h2 class="page-subtitle">个人信息学奥林匹克生涯回顾</h2>
+        </div>
+        
+        <p class="curatorial-statement">
+          从最开始到一切的结局，完整详细的个人回忆录。
+        </p>
+      </div>
+
+      <div class="main-content">
+        <div class="cover-image-container">
+           <img src="https://pic1.imgdb.cn/item/6999aed7d908540f9e20201f.png" alt="Cover Image" />
+           <div class="cover-placeholder">
+              <span>Cover Image</span>
+           </div>
+        </div>
+
+        <div class="foreword-section">
+          <h3>速 览</h3>
+          <div class="foreword-text">
+            <p>
+              我是一个普通人，一个不够成功的 OIer。笼统的来讲，我从高一开始学习 OI，高二在 NOIP2023 后获省一退役。
+            </p>
+            <p>
+              感谢你翻开了这本书。看完上面笼统的概括，你可以马上选择离开。因为我不能保证我的故事精彩，不能保证读完你会有收获，我写这本书也只是为了记录自己，也有可能会“止增笑耳”。但如果你想了解我的话，欢迎你继续读下去。
+            </p>
+            <p>
+              接下来，我们会从最最开始讲起。
+            </p>
+          </div>
+
+          <div class="action-buttons">
+            <div class="primary-actions">
+              <a href="/archive/memoir-reader" class="action-btn primary">
+                <span class="btn-text">在线阅读</span>
+                <span class="btn-icon">→</span>
+              </a>
+              <a href="/memoir.pdf" class="action-btn secondary" target="_blank" rel="noopener noreferrer">
+                <span class="btn-text">下载 PDF</span>
+                <span class="btn-icon">↓</span>
+              </a>
+            </div>
+            
+            <a href="#physical-book" class="physical-book-btn">
+              <span class="btn-text">在寻找实体书吗？</span>
+              <span class="btn-icon">↓</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div id="physical-book" class="physical-section">
+        <h2 class="section-title">关于实体书</h2>
+        
+        <div class="physical-intro">
+          <p>
+            自回忆录初稿完成以来，陆陆续续有一些朋友向我询问关于实体书的相关事宜。
+          </p>
+          <p>
+            为了纪念这段独具意义的时光，也为了让更多对竞赛、对我感兴趣的人可以了解更多，实体书计划是从回忆录编写之初就确定存在的。
+            如今，在我高中毕业之后，实体书的工作可谓进行得如火如荼。
+          </p>
+          <p>
+            鉴于对全体有所期待的人的感谢，获得实体书是不收取任何费用的。
+            如果你希望我获得一些基本的回馈，你可以在书中找到赞助渠道。
+          </p>
+          <p>
+            在正常的情况下，想要获得回忆录的实体书，你只需要在下方的表格中填写相关的信息，
+            我会走中国邮政的印刷品邮寄给你，并在邮寄时通知你在接下来的几天注意查收。
+            实体书并不是一直都有的，我会不定期的开启新的一轮送印。
+            你可以查看左下方的表格来估计你大概多久之后可以拿到实体书。
+          </p>
+          <p>
+            由于印刷全部是我自费，希望你不要预订太多，毕竟电子版阅读也是非常方便的，对吧？
+          </p>
+          <p>
+            再次感谢所有支持我的人！谢谢你们！
+          </p>
+        </div>
+        
+        <div class="physical-content">
+          <div class="specs-column">
+            <h3 class="column-title">实体书详情</h3>
+            <dl class="specs-list">
+              <div class="spec-item">
+                <dt>规格 Specification</dt>
+                <dd>A5 (148 × 210 mm)</dd>
+              </div>
+              <div class="spec-item">
+                <dt>页数 Pages</dt>
+                <dd>160 页</dd>
+              </div>
+              <div class="spec-item">
+                <dt>纸张 Paper</dt>
+                <dd>80g 普通纸 / 封面 200g 覆膜铜版纸</dd>
+              </div>
+              <div class="spec-item">
+                <dt>装帧 Binding</dt>
+                <dd>胶装</dd>
+              </div>
+            </dl>
+
+            <h3 class="column-title" style="margin-top: 3rem;">印制批次</h3>
+            <ol class="batch-timeline">
+              <li class="batch-item done">
+                <span class="batch-marker" aria-hidden="true"></span>
+                <div class="batch-card">
+                  <div class="batch-top">
+                    <span class="batch-name">第一轮</span>
+                    <span class="batch-date">2025.08</span>
+                  </div>
+                  <div class="batch-row">
+                    <span class="batch-label">版本</span>
+                    <span class="batch-value">精排版初版</span>
+                  </div>
+                  <div class="batch-row">
+                    <span class="batch-label">赠品</span>
+                    <span class="batch-value">TO 签 + 南开明信片盲盒</span>
+                  </div>
+                  <div class="batch-row">
+                    <span class="batch-label">印量</span>
+                    <span class="batch-value">30 册</span>
+                  </div>
+                  <div class="batch-status status-done">已完结</div>
+                </div>
+              </li>
+              <li class="batch-item active">
+                <span class="batch-marker" aria-hidden="true"></span>
+                <div class="batch-card">
+                  <div class="batch-top">
+                    <span class="batch-name">第二轮</span>
+                    <span class="batch-date">2025.10</span>
+                  </div>
+                  <div class="batch-row">
+                    <span class="batch-label">版本</span>
+                    <span class="batch-value">登陆地球 18 周年庆特别版</span>
+                  </div>
+                  <div class="batch-row">
+                    <span class="batch-label">赠品</span>
+                    <span class="batch-value">TO 签 + 南开明信片</span>
+                  </div>
+                  <div class="batch-row">
+                    <span class="batch-label">印量</span>
+                    <span class="batch-value">30 册</span>
+                  </div>
+                  <div class="batch-status status-active">进行中</div>
+                </div>
+              </li>
+            </ol>
+          </div>
+          
+          <div class="form-column">
+            <h3 class="column-title">预定报名</h3>
+            <form class="signup-form" id="book-interest-form">
+              <div class="form-group">
+                <label for="name">名称 Name</label>
+                <input type="text" id="name" name="name" required placeholder="您的姓名？">
+              </div>
+              
+              <div class="form-group">
+                <label for="location">所在地区 Location</label>
+                <input type="text" id="location" name="location" required placeholder="这里填一下省市，例如：河北省唐山市">
+              </div>
+
+              <div class="form-group">
+                <label for="address">街道地址 Address</label>
+                <input type="text" id="address" name="address" required placeholder="详细地址，例如：路北区某小区某楼某单元某号">
+              </div>
+
+              <div class="form-group">
+                <label for="code">邮政编码 Postal Code</label>
+                <input type="text" id="code" name="code" required placeholder="不知道可以查一下嘞，或者邮的时候我帮你解决也阔以">
+              </div>
+              
+              <div class="form-group">
+                <label for="quantity">数量 Quantity</label>
+                <select id="quantity" name="quantity">
+                  <option value="1">1 本</option>
+                  <option value="2">2 本</option>
+                  <option value="3">3 本</option>
+                </select> 
+              </div>
+
+              <div class="form-group">
+                <label for="number">联系电话 Phone Number</label>
+                <input type="text" id="number" name="number" required placeholder="方便我联系你咧">
+              </div>
+
+              <div class="form-group">
+                <label for="message">留言 Message (Optional)</label>
+                <textarea id="message" name="message" rows="3" placeholder="有什么想对我说的吗？（想要签名记得告诉我！）"></textarea>
+              </div>
+              
+              <button type="submit" class="submit-btn" id="submit-btn">
+                <span>提交预定</span>
+                <span class="btn-icon">→</span>
+              </button>
+              <p class="form-status" id="form-status"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const form = document.getElementById('book-interest-form');
+    const status = document.getElementById('form-status');
+    const submitBtn = document.getElementById('submit-btn');
+
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!submitBtn || !status) return;
+        
+        submitBtn.setAttribute('disabled', 'true');
+        submitBtn.style.opacity = '0.7';
+        submitBtn.innerText = '提交中...';
+        
+        const formData = new FormData(e.target as HTMLFormElement);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+          // 这里假设后端 API 路径为 /api/book-interest
+          const response = await fetch('/api/book-interest', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+          });
+
+          if (response.ok) {
+            status.textContent = '感谢您的支持！预定信息已提交。';
+            status.className = 'form-status success';
+            (e.target as HTMLFormElement).reset();
+          } else {
+            status.textContent = '提交失败，请稍后重试。';
+            status.className = 'form-status error';
+          }
+        } catch (error) {
+          status.textContent = '网络错误，请检查您的连接。';
+          status.className = 'form-status error';
+        } finally {
+          submitBtn.removeAttribute('disabled');
+          submitBtn.style.opacity = '1';
+          submitBtn.innerText = '提交预定 →';
+        }
+      });
+    }
+  </script>
+</BaseLayout>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  :global(.light-source) { 
+    display: none;
+  }
+  .memoir-bg-lights {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .red-light-large {
+    display: block !important;
+    position: absolute;
+    width: 60vw;
+    height: 60vw;
+    background-color: #6d0e11;
+    opacity: 0.4;
+    mix-blend-mode: screen;
+    top: -10vh;
+    right: -10vw;
+    border-radius: 50%;
+    filter: blur(140px);
+    animation: pulseRedLight 15s ease-in-out infinite;
+  }
+  @keyframes pulseRedLight {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    25% { opacity: 0.5; transform: scale(1.05); }
+    50% { opacity: 0.25; transform: scale(1.1); }
+    75% { opacity: 0.45; transform: scale(1.03); }
+  }
+
+  .memoir-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15vh 5vw 10vh;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+    color: var(--text-primary);
+  }
+
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .header-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 800px;
+  }
+
+  .meta-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .time-interval {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.4rem;
+  }
+
+  .page-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    margin: 0;
+    line-height: 1.2;
+    background: linear-gradient(45deg, #fff, #ddd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .page-subtitle {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin: 1rem 0 0 0;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.2em;
+    line-height: 1.4;
+  }
+
+  .curatorial-statement {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+    border-left: 2px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .main-content {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    align-items: start;
+    margin-top: 2rem;
+  }
+
+  .cover-image-container {
+    width: 100%;
+    /* aspect-ratio: 3/4;  Removed fixed aspect ratio to adapt to image */
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .cover-image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .cover-placeholder {
+    display: none;
+  }
+
+  .foreword-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .foreword-section h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.5rem;
+    margin: 0;
+    color: #fff;
+    letter-spacing: 0.2em;
+  }
+
+  .foreword-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+    max-width: 480px; /* Adjust as needed to fit content */
+  }
+
+  .primary-actions {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'Bodoni Moda', 'Noto Serif SC', serif;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    flex: 1; /* Make buttons grow to fill space */
+    min-width: 0;
+    cursor: pointer;
+  }
+
+  .action-btn.primary {
+    background: rgba(255, 255, 255, 0.9);
+    color: #000;
+  }
+
+  .action-btn.primary:hover {
+    background: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+  }
+
+  .action-btn.secondary {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .action-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: #fff;
+    transform: translateY(-2px);
+  }
+
+  .btn-icon {
+    font-size: 1.2rem;
+    margin-left: 0.5rem;
+  }
+
+  @media (max-width: 1024px) {
+    .main-content {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    
+    .cover-image-container {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    
+    /* On smaller screens, allow full width */
+    .action-buttons {
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .memoir-container {
+      padding-top: 10vh;
+    }
+    
+    .page-title {
+      font-size: 2.5rem;
+    }
+    
+    .page-subtitle {
+      font-size: 1.5rem;
+    }
+
+    .action-buttons {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .action-btn {
+      width: 100%;
+    }
+
+    .physical-content {
+      flex-direction: column;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .specs-column, .form-column {
+      width: 100%;
+    }
+  }
+
+  /* Physical Book Section Styles */
+  .physical-book-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 431px;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+    gap: 0.5rem;
+  }
+
+  .physical-book-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .physical-section {
+    width: 100%;
+    /* margin-top: 6rem; */
+    padding-top: 6rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    scroll-margin-top: 10vh; /* Smooth scroll offset */
+  }
+
+  .section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 2.1rem;
+    text-align: center;
+    letter-spacing: 0.1em;
+  }
+
+  .physical-intro {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 800px;
+    margin: 0 auto 4rem auto;
+    text-align: left;
+  }
+
+  .physical-intro p {
+    text-indent: 2em;
+    margin-bottom: 1.5rem;
+  }
+
+  .physical-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 4rem;
+  }
+
+  .specs-column {
+    flex: 1;
+    min-width: 300px;
+  }
+
+  .form-column {
+    flex: 1;
+    min-width: 300px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .column-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 1rem;
+  }
+
+  .specs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .spec-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .spec-item dt {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .spec-item dd {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.2rem;
+    color: #fff;
+    margin: 0;
+    padding-left: 0.5rem;
+    border-left: 2px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-group label {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.05em;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    padding: 0.8rem;
+    color: #fff;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.6);
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  .submit-btn {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #fff;
+    color: #000;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .submit-btn:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+  }
+
+  .form-status {
+    font-size: 0.9rem;
+    text-align: center;
+    min-height: 1.2em;
+  }
+  .form-status.success { color: #4ade80; }
+  .form-status.error { color: #f87171; }
+
+  /* Batch Timeline Styles */
+  .batch-timeline {
+    list-style: none;
+    margin: 2rem 0 0;
+    padding: 0 0 0 1.5rem;
+    position: relative;
+    font-family: 'Noto Serif SC', serif;
+  }
+
+  .batch-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.35rem;
+    top: 0.2rem;
+    bottom: 0.2rem;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .batch-item {
+    position: relative;
+    padding: 0 0 2rem 0;
+  }
+
+  .batch-item:last-child {
+    padding-bottom: 0;
+  }
+
+  .batch-marker {
+    position: absolute;
+    left: -1.1rem;
+    top: 0.35rem;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.08);
+  }
+
+  .batch-item.active .batch-marker {
+    background: #4ade80;
+    border-color: rgba(74, 222, 128, 0.7);
+    box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.2);
+  }
+
+  .batch-item.done .batch-marker {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .batch-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .batch-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .batch-name {
+    font-family: 'Bodoni Moda', 'Noto Serif SC', serif;
+    font-size: 1.2rem;
+    color: #fff;
+    letter-spacing: 0.08em;
+  }
+
+  .batch-date {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .batch-row {
+    display: grid;
+    grid-template-columns: 3.5rem 1fr;
+    gap: 0.75rem;
+    padding: 0.35rem 0;
+  }
+
+  .batch-label {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.05em;
+  }
+
+  .batch-value {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .batch-status {
+    margin-top: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 768px) {
+    .batch-timeline {
+      padding-left: 1.2rem;
+    }
+
+    .batch-row {
+      grid-template-columns: 1fr;
+      gap: 0.3rem;
+    }
+  }
+  
+  .status-done {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.9rem;
+  }
+  
+  .status-active {
+    color: #4ade80;
+    font-size: 0.9rem;
+  }
+
+  .back-link {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    z-index: 20;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.4rem 0.7rem;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(2px);
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .back-link:hover {
+    color: rgba(255, 255, 255, 0.95);
+    transform: translateX(-4px);
+  }
+
+  @media (max-width: 768px) {
+    .back-link {
+      top: 16px;
+      left: 16px;
+      font-size: 0.9rem;
+    }
+  }
+</style>
