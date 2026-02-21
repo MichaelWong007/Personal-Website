@@ -5,5 +5,7 @@ import vercel from '@astrojs/vercel';
 export default defineConfig({
   integrations: [mdx()],
   output: 'server',
-  adapter: vercel()
+  adapter: vercel({
+    isr: false,
+  })
 });
