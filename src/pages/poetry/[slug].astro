@@ -2,17 +2,19 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-// 在 SSR 模式下，从 URL 参数动态获取 slug
-const { slug } = Astro.params;
-
-// 从集合中获取对应的条目
-const allEntries = await getCollection('poetry');
-const entry = allEntries.find(e => e.slug === slug);
-
-if (!entry) {
-  return Astro.redirect('/404');
+export async function getStaticPaths() {
+  const poetryEntries = await getCollection('poetry');
+  return poetryEntries.map((entry: CollectionEntry<'poetry'>) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
 }
 
+interface Props {
+  entry: CollectionEntry<'poetry'>;
+}
+
+const { entry } = Astro.props as Props;
 const { Content } = await entry.render();
 const { title, date, category, tags, coverImage } = entry.data;
 

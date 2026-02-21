@@ -2,6 +2,8 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection, type CollectionEntry } from 'astro:content';
 
+export const prerender = true;
+
 const allPoetry = await getCollection('poetry');
 const sortedPoetry = allPoetry.sort((a: CollectionEntry<'poetry'>, b: CollectionEntry<'poetry'>) => b.data.date.getTime() - a.data.date.getTime());
 
