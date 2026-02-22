@@ -74,21 +74,22 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     </script>
   </head>
 
-  <body>
+  <body class="layout-body">
     <!-- 光源 -->
     <div class="light-source blue-light"></div>
     <div class="light-source red-light"></div>
 
     <!-- 右上角品牌与导航 -->
-    <div class="brand-nav">
+    <div class="brand-nav" id="brandNav">
       <div class="brand">
         <!-- 替换为你的字标图床链接 -->
-        <a href="/">
+        <a href="/" class="brand-link" id="brandLink" aria-expanded="false" aria-controls="siteNav">
           <img src="https://pic1.imgdb.cn/item/6995d39a556e27f1c93a3414.png" alt="字标与徽标" class="logo" />
         </a>
       </div>
 
-      <nav class="vertical-nav">
+      <div class="nav-panel" id="navPanel">
+        <nav class="vertical-nav" id="siteNav">
         <a href="/poetry-prose" class="nav-item">
           <div class="nav-title">
             <span class="en">POETRY & PROSE</span>
@@ -131,7 +132,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
             想快速了解我？<br>想知道更多？
           </div>
         </a>
-      </nav>
+        </nav>
+      </div>
     </div>
 
     <!-- 页面内容 -->
@@ -150,6 +152,56 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         document.documentElement.scrollTop = 0;
         document.body.scrollTop = 0;
         window.scrollTo(0, 0);
+      });
+
+      const body = document.body;
+      const brandLink = document.getElementById('brandLink');
+      const brandNav = document.getElementById('brandNav');
+      const compactQuery = window.matchMedia('(max-width: 560px)');
+
+      const setCompactState = (isCompact) => {
+        body.classList.toggle('is-compact', isCompact);
+        if (!isCompact) {
+          body.classList.remove('nav-expanded');
+          brandLink.setAttribute('aria-expanded', 'false');
+        }
+      };
+
+      setCompactState(compactQuery.matches);
+      compactQuery.addEventListener('change', (event) => {
+        setCompactState(event.matches);
+      });
+
+      brandLink.addEventListener('click', (event) => {
+        if (!body.classList.contains('is-compact')) {
+          return;
+        }
+
+        if (!body.classList.contains('nav-expanded')) {
+          event.preventDefault();
+          body.classList.add('nav-expanded');
+          brandLink.setAttribute('aria-expanded', 'true');
+          return;
+        }
+
+        window.location.href = '/';
+      });
+
+      document.addEventListener('click', (event) => {
+        if (!body.classList.contains('is-compact')) {
+          return;
+        }
+
+        if (!body.classList.contains('nav-expanded')) {
+          return;
+        }
+
+        if (brandNav.contains(event.target)) {
+          return;
+        }
+
+        body.classList.remove('nav-expanded');
+        brandLink.setAttribute('aria-expanded', 'false');
       });
     </script>
 
@@ -257,6 +309,26 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     flex-direction: column;
     align-items: flex-end;
     margin-bottom: 27px;
+    position: relative;
+  }
+
+  .brand::before {
+    content: "";
+    position: absolute;
+    inset: -12px -14px;
+    border-radius: 999px;
+    background: rgba(10, 10, 10, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .brand-link {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
   }
 
   .logo {
@@ -270,6 +342,25 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     flex-direction: column;
     gap: 24px;
     text-align: right;
+    transition: opacity 0.35s ease, transform 0.35s ease, max-height 0.35s ease;
+  }
+
+  .nav-panel {
+    position: relative;
+    padding: 0;
+  }
+
+  .nav-panel::before {
+    content: "";
+    position: absolute;
+    inset: -16px -18px;
+    border-radius: 18px;
+    background: rgba(8, 8, 8, 0.45);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
   }
 
   .nav-item {
@@ -368,6 +459,40 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     .nav-desc {
       max-width: 28ch;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .brand-nav {
+      top: 16px;
+      right: 16px;
+    }
+
+    .logo {
+      height: 52px;
+      transform: translateX(6px);
+    }
+
+    .layout-body.is-compact .brand::before {
+      opacity: 1;
+    }
+
+    .layout-body.is-compact .vertical-nav {
+      max-height: 0;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-8px);
+    }
+
+    .layout-body.is-compact.nav-expanded .vertical-nav {
+      max-height: 540px;
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .layout-body.is-compact.nav-expanded .nav-panel::before {
+      opacity: 1;
     }
   }
 </style>
