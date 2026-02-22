@@ -1,0 +1,771 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+export const prerender = true;
+
+const title = "关于 About | 二两碘酊 MichaelWong";
+---
+
+<BaseLayout title={title}>
+  <div class="about-bg-lights" aria-hidden="true">
+    <div class="light-source about-red-light"></div>
+    <div class="light-source about-blue-light"></div>
+  </div>
+
+  <section class="about-container">
+    <div class="about-content">
+      
+      <!-- Logo 展示区 -->
+      <div class="logo-section">
+        <img src="https://pic1.imgdb.cn/item/6995d39a556e27f1c93a3414.png" alt="二两碘酊 MichaelWong Logo" class="about-logo" />
+      </div>
+
+      <!-- 标题区 -->
+      <div class="header-section">
+        <h1 class="page-title">关 于</h1>
+        <h2 class="page-subtitle">About</h2>
+      </div>
+
+      <!-- 自我介绍区 -->
+      <div class="intro-section">
+        <p>
+          从 <span class="latin-text">LaTeX</span> 到 <span class="latin-text">C++</span>，从 平面设计与视频剪辑 到 诗词歌赋——
+        </p>
+        <p>
+          朋友你好，我是 <strong>二两碘酊 <span class="latin-text">MichaelWong</span></strong>，一位钟爱各类视听逻辑文字美学与计算机艺术的热血青年。
+        </p>
+        <p>
+          字端复，自号穑斋主人。中文区网名一直叫二两碘酊，外文优先使用 <span class="latin-text">MichaelWong</span>，视场合可能使用 <span class="latin-text">Iodine Tincture</span> 或 <span class="latin-text">IOTynC</span>. 喜欢搞点诗歌创作、程序设计、视频剪辑……
+        </p>
+        <p>
+          欢迎你来到这里，没什么可以拿来感谢你的。如果你恰好有时间，那就让我们一起坐下；来二两碘酊，我们聊点有意思的。
+        </p>
+      </div>
+
+      <!-- 社交链接区 -->
+      <div class="social-section">
+        <h3 class="section-title">在其他地方找到我</h3>
+        
+        <div class="bento-container">
+          
+          <!-- 编程与算法 -->
+          <div class="bento-group-divider"></div>
+          <div class="bento-grid">
+            <a href="https://github.com/MichaelWong007" target="_blank" rel="noopener noreferrer" class="bento-card large github">
+              <div class="bento-icon">
+                <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+              </div>
+              <div class="bento-info">
+                <span class="bento-name">GitHub</span>
+                <span class="bento-id">@Michael C. Wong</span>
+              </div>
+            </a>
+
+            <a href="https://www.luogu.com.cn/user/765446" target="_blank" rel="noopener noreferrer" class="bento-card wide luogu">
+              <div class="bento-icon">
+                <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              </div>
+              <div class="bento-info">
+                <span class="bento-name">洛谷</span>
+                <span class="bento-id">@MichaelWong</span>
+              </div>
+            </a>
+
+            <a href="https://codeforces.com/profile/MichaelWong12138" target="_blank" rel="noopener noreferrer" class="bento-card codeforces">
+              <div class="bento-icon">
+                <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="18" y="3" width="4" height="18"></rect><rect x="10" y="8" width="4" height="13"></rect><rect x="2" y="13" width="4" height="8"></rect></svg>
+              </div>
+              <div class="bento-info">
+                <span class="bento-name">Codeforces</span>
+                <span class="bento-id">@MichaelWong12138</span>
+              </div>
+            </a>
+
+            <a href="https://atcoder.jp/users/MichaelWong" target="_blank" rel="noopener noreferrer" class="bento-card atcoder">
+              <div class="bento-icon">
+                <img src="https://img.atcoder.jp/assets/logo.png" alt="AtCoder Logo" style="width: 28px; height: 28px; object-fit: contain;" />
+              </div>
+              <div class="bento-info">
+                <span class="bento-name">AtCoder</span>
+                <span class="bento-id">@MichaelWong</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- 社交与媒体 -->
+          <div class="bento-group-divider"></div>
+          <div class="bento-grid">
+            <a href="https://space.bilibili.com/443206464" target="_blank" rel="noopener noreferrer" class="bento-card wide bilibili">
+              <div class="bento-icon">
+                <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg>
+              </div>
+              <div class="bento-info">
+                <span class="bento-name">Bilibili</span>
+                <span class="bento-id">@二两碘酊</span>
+              </div>
+            </a>
+
+            <a href="https://x.com/MichaelWong_CN" target="_blank" rel="noopener noreferrer" class="bento-card twitter">
+              <div class="bento-icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </div>
+              <div class="bento-info">
+                <span class="bento-name">X (Twitter)</span>
+                <span class="bento-id">@MichaelWong_CN</span>
+              </div>
+            </a>
+
+            <a href="https://www.instagram.com/michaelwong_cn" target="_blank" rel="noopener noreferrer" class="bento-card instagram">
+              <div class="bento-icon">
+                <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+              </div>
+              <div class="bento-info">
+                <span class="bento-name">Instagram</span>
+                <span class="bento-id">@michaelwong_cn</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- 博客与联系方式 -->
+          <div class="bento-group-divider"></div>
+          <div class="bento-grid">
+            <a href="https://www.cnblogs.com/michaelwong007" target="_blank" rel="noopener noreferrer" class="bento-card wide cnblogs">
+              <div class="bento-icon">
+                <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+              </div>
+              <div class="bento-info">
+                <span class="bento-name">博客园</span>
+                <span class="bento-id">二两碘酊</span>
+              </div>
+            </a>
+
+            <a href="mailto:michaelwong007@126.com" class="bento-card small email" title="michaelwong007@126.com">
+              <div class="bento-icon">
+                <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div class="bento-info">
+                <span class="bento-name">126mail</span>
+                <span class="bento-id">michaelwong007@126.com</span>
+              </div>
+            </a>
+
+            <a href="mailto:michaelwong007china@gmail.com" class="bento-card small email" title="michaelwong007china@gmail.com">
+              <div class="bento-icon">
+                <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div class="bento-info">
+                <span class="bento-name">Gmail</span>
+                <span class="bento-id">michaelwong007china@gmail.com</span>
+              </div>
+            </a>
+
+            <a href="https://mp.weixin.qq.com/s/xRTL_IeLcdu9SOvhyDIxPA?click_id=9" target="_blank" rel="noopener noreferrer" class="bento-card wide wechat">
+              <div class="bento-icon">
+                <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+              </div>
+              <div class="bento-info">
+                <span class="bento-name">微信公众号</span>
+                <span class="bento-id">碘伏漫谈</span>
+              </div>
+            </a>
+
+            <a href="tencent://message/?uin=23720687798&Site=&Menu=yes" class="bento-card wide qq">
+              <div class="bento-icon">
+                <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+              </div>
+              <div class="bento-info">
+                <span class="bento-name">QQ</span>
+                <span class="bento-id">23720687798</span>
+              </div>
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 网页更新日志 -->
+      <div class="changelog-section">
+        <h3 class="section-title">网页更新日志</h3>
+        
+        <div class="changelog-container">
+
+          <div class="changelog-item">
+            <div class="changelog-header">
+              <div class="changelog-version">v0.4.0</div>
+              <div class="changelog-version-name">Epitaph 碑文</div>
+              <div class="changelog-date">2026年2月22日</div>
+            </div>
+            <div class="changelog-content">
+              <div class="changelog-title">关于页面</div>
+              <ul class="changelog-list">
+                <li>关于页面上线</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="changelog-item">
+            <div class="changelog-header">
+              <div class="changelog-version">v0.3.0</div>
+              <div class="changelog-version-name">Closure 闭包</div>
+              <div class="changelog-date">2026年2月22日</div>
+            </div>
+            <div class="changelog-content">
+              <div class="changelog-title">个人档案与设计语言</div>
+              <ul class="changelog-list">
+                <li>丰富并完善了设计语言</li>
+                <li>个人档案板块上线</li>
+                <li>回忆录相关板块上线</li>
+                <li>404 页面上线</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="changelog-item">
+            <div class="changelog-header">
+              <div class="changelog-version">v0.2.1</div>
+              <div class="changelog-date">2026年2月20日</div>
+            </div>
+            <div class="changelog-content">
+              <div class="changelog-title">诗文与程序设计调整</div>
+              <ul class="changelog-list">
+                <li>“穑斋诗文”经完善后升级为“碘伏诗文”，进行了架构调整</li>
+                <li>同步了碘伏诗文双月刊</li>
+                <li>将“程序设计”板块暂时定向到了博客园博客</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="changelog-item">
+            <div class="changelog-header">
+              <div class="changelog-version">v0.2.0</div>
+              <div class="changelog-date">2026年2月19日</div>
+            </div>
+            <div class="changelog-content">
+              <div class="changelog-title">“穑斋诗文”板块上线</div>
+              <ul class="changelog-list">
+                <li>上线了穑斋诗文板块</li>
+                <li>同步了 2026 年 1 月的单体诗词作品</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="changelog-item">
+            <div class="changelog-header">
+              <div class="changelog-version">v0.1.0</div>
+              <div class="changelog-version-name">Armstrong 阿姆斯特朗</div>
+              <div class="changelog-date">2026年2月18日</div>
+            </div>
+            <div class="changelog-content">
+              <div class="changelog-title">网站最初版发布</div>
+              <ul class="changelog-list">
+                <li>确定了设计语言风格和网站架构</li>
+                <li>上线了主页和导航栏</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  :global(.light-source) {
+    display: none;
+  }
+  
+  .about-bg-lights {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .about-red-light {
+    display: block !important;
+    position: absolute;
+    width: 55vw;
+    height: 55vw;
+    background-color: #6d0e11;
+    opacity: 0.7;
+    mix-blend-mode: screen;
+    bottom: 15vw;
+    right: 30vw;
+    border-radius: 50%;
+    filter: blur(120px);
+    animation: pulseRedLight 10s ease-in-out infinite;
+  }
+
+  .about-blue-light {
+    display: block !important;
+    position: absolute;
+    width: 55vw;
+    height: 55vw;
+    background-color: #00094b;
+    opacity: 0.9;
+    mix-blend-mode: screen;
+    bottom: 15vw;
+    right: 12vw;
+    border-radius: 50%;
+    filter: blur(120px);
+    animation: pulseBlueLight 14s ease-in-out infinite;
+  }
+
+  @keyframes pulseRedLight {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(1.1); }
+  }
+
+  @keyframes pulseBlueLight {
+    0%, 100% { opacity: 0.9; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.15); }
+  }
+
+  .about-container {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 15vh 5vw 10vh;
+    min-height: 100vh;
+    color: var(--text-primary);
+  }
+
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .logo-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .about-logo {
+    width: 240px;
+    height: auto;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
+    transition: transform 0.5s ease, filter 0.5s ease;
+  }
+
+  .about-logo:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.4));
+  }
+
+  .header-section {
+    text-align: center;
+  }
+
+  .page-title {
+    font-family: "Noto Serif SC", serif;
+    font-size: 3rem;
+    font-weight: 700;
+    margin: -2.5rem 0 0.5rem 0;
+    letter-spacing: 0.1em;
+  }
+
+  .page-subtitle {
+    font-family: "Bodoni Moda", serif;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.2em;
+    margin: 0;
+    font-weight: 400;
+  }
+
+  .intro-section {
+    font-family: "Noto Serif SC", serif;
+    font-size: 1.1rem;
+    line-height: 2;
+    color: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 2.5rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+  }
+
+  .intro-section p {
+    margin: 0 0 1.5rem 0;
+    text-indent: 2em;
+  }
+
+  .intro-section p:last-child {
+    margin-bottom: 0;
+  }
+
+  .intro-section strong {
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .intro-section .latin-text {
+    font-family: "Bodoni Moda", serif;
+    font-style: normal;
+  }
+
+  .intro-section strong .latin-text {
+    font-family: "Bodoni Moda", serif;
+    font-weight: 700;
+  }
+
+  .social-section {
+    margin-top: 1rem;
+  }
+
+  .section-title {
+    font-family: "Noto Serif SC", serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 0 0 2rem 0;
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+
+  /* Bento Grid 样式 */
+  .bento-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: minmax(120px, auto);
+    gap: 1.5rem;
+  }
+
+  .bento-group-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  /* 默认卡片样式 (1x1 小方块) */
+  .bento-card {
+    grid-column: span 3;
+    grid-row: span 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* 2x1 长条卡片 (横向) */
+  .bento-card.wide {
+    grid-column: span 6;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .bento-card.wide .bento-info {
+    width: calc(100% - 56px - 1rem); /* 减去图标宽度和 gap */
+  }
+
+  /* 1x1 小卡片 (横向，半宽) */
+  .bento-card.small {
+    grid-column: span 3;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  /* 2x2 大方块卡片 */
+  .bento-card.large {
+    grid-column: span 6;
+    grid-row: span 2;
+    align-items: center;
+    text-align: center;
+  }
+
+  .bento-card.large .bento-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1rem;
+  }
+
+  .bento-card.large .bento-icon svg,
+  .bento-card.large .bento-icon img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .bento-card.large .bento-name {
+    font-size: 1.5rem;
+  }
+
+  .bento-card.large .bento-id {
+    font-size: 1.1rem;
+  }
+
+  /* 悬浮效果 */
+  .bento-card:hover {
+    transform: translateY(-5px) scale(1.05);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+  }
+
+  /* 品牌颜色悬浮发光效果 */
+  .bento-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top right, var(--brand-color, rgba(255,255,255,0.1)) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+
+  .bento-card:hover::before {
+    opacity: 0.15;
+  }
+
+  /* 各品牌颜色定义 */
+  .github { --brand-color: #ffffff; }
+  .luogu { --brand-color: #3498db; }
+  .codeforces { --brand-color: #e74c3c; }
+  .atcoder { --brand-color: #bbbbbb; }
+  .bilibili { --brand-color: #fb7299; }
+  .twitter { --brand-color: #1da1f2; }
+  .instagram { --brand-color: #e1306c; }
+  .cnblogs { --brand-color: #39b54a; }
+  .email { --brand-color: #f1c40f; }
+  .qq { --brand-color: #12b7f5; }
+  .wechat { --brand-color: #07c160; }
+
+  .bento-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 14px;
+    color: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+  }
+
+  .bento-card:hover .bento-icon {
+    background: var(--brand-color, rgba(255, 255, 255, 0.2));
+    color: #fff;
+    transform: scale(1.1) rotate(-5deg);
+  }
+
+  /* 特殊处理白色背景的图标悬浮颜色 */
+  .bento-card.github:hover .bento-icon {
+    color: #000;
+  }
+
+  .bento-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    z-index: 1;
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .bento-card:hover .bento-info {
+    overflow: visible;
+  }
+
+  .bento-name {
+    font-family: "Noto Sans SC", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .bento-id {
+    font-family: "Fira Code", Consolas, "Noto Sans SC", monospace;
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: rgba(255, 255, 255, 0.55);
+    transition: all 0.3s ease;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+  }
+
+  .bento-card:hover .bento-id {
+    color: rgba(255, 255, 255, 0.95);
+    -webkit-line-clamp: unset;
+    overflow: visible;
+    word-break: break-all;
+  }
+
+  /* 静态卡片（无链接） */
+  .bento-card.qq {
+    cursor: pointer;
+  }
+
+  /* 更新日志样式 */
+  .changelog-section {
+    margin-top: 2rem;
+  }
+
+  .changelog-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .changelog-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+
+  .changelog-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateX(5px);
+  }
+
+  .changelog-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .changelog-version {
+    font-family: "Fira Code", Consolas, monospace;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  .changelog-version-name {
+    font-family: "Bodoni Moda", "Noto Serif SC", serif;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.05em;
+  }
+
+  .changelog-version-name:empty {
+    display: none;
+  }
+
+  .changelog-date {
+    font-family: "Bodoni Moda", serif;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.05em;
+    margin-left: auto;
+  }
+
+  .changelog-title {
+    font-family: "Noto Serif SC", serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 0.8rem;
+  }
+
+  .changelog-list {
+    font-family: "Noto Sans SC", sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    padding-left: 1.5rem;
+  }
+
+  .changelog-list li {
+    margin-bottom: 0.5rem;
+  }
+
+  .changelog-list li:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .bento-card {
+      grid-column: span 6;
+    }
+    .bento-card.wide, .bento-card.large {
+      grid-column: span 12;
+    }
+    .bento-card.small {
+      grid-column: span 6;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .about-container {
+      padding-top: 12vh;
+    }
+
+    .intro-section {
+      padding: 1.5rem;
+      font-size: 1rem;
+    }
+
+    .page-title {
+      font-size: 2.5rem;
+    }
+
+    .bento-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .bento-card {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .changelog-item {
+      padding: 1.5rem;
+    }
+
+    .changelog-title {
+      font-size: 1.1rem;
+    }
+
+    .changelog-list {
+      font-size: 0.95rem;
+    }
+  }
+</style>
