@@ -1,0 +1,18 @@
+# 允许所有搜索引擎抓取
+User-agent: *
+Allow: /
+
+# Sitemap位置（部署后需要替换为实际域名）
+Sitemap: https://michaelwong.space/sitemap.xml
+
+# 百度搜索引擎
+User-agent: Baiduspider
+Allow: /
+
+# Google搜索引擎
+User-agent: Googlebot
+Allow: /
+
+# Bing搜索引擎
+User-agent: Bingbot
+Allow: /

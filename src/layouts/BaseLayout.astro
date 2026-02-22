@@ -1,5 +1,19 @@
 ﻿---
-const { title = "二两碘酊 MichaelWong" } = Astro.props;
+interface Props {
+  title?: string;
+  description?: string;
+  keywords?: string;
+  ogImage?: string;
+}
+
+const { 
+  title = "二两碘酊 MichaelWong",
+  description = "二两碘酊 MichaelWong ，字端复，自号穑斋主人。钟爱各类视听逻辑文字美学与计算机艺术的热血青年。从 LaTeX 到 C++，从平面设计到诗词歌赋，这里是二两碘酊的个人空间。",
+  keywords = "二两碘酊,MichaelWong,穑斋主人,端复,碘伏诗文,程序设计,算法竞赛,诗词创作,个人博客",
+  ogImage = "https://pic1.imgdb.cn/item/6995d39a556e27f1c93a3414.png"
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <html lang="zh-CN">
@@ -7,7 +21,30 @@ const { title = "二两碘酊 MichaelWong" } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="二两碘酊 MichaelWong" />
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:site_name" content="二两碘酊 MichaelWong" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:site" content="@MichaelWong_CN" />
+    
     <!-- 字体 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +52,26 @@ const { title = "二两碘酊 MichaelWong" } = Astro.props;
     
     <!-- Favicon -->
     <link rel="icon" href="https://pic.imgdb.cn/item/65556356c458853aef4ed7e8.png">
+    
+    <!-- Schema.org 结构化数据 -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "二两碘酊",
+        "alternateName": ["MichaelWong", "穑斋主人", "端复"],
+        "url": "https://michaelwong.space",
+        "image": "https://pic1.imgdb.cn/item/6995d39a556e27f1c93a3414.png",
+        "description": "钟爱各类视听逻辑文字美学与计算机艺术的热血青年",
+        "jobTitle": "程序员、诗人、创作者",
+        "sameAs": [
+          "https://github.com/MichaelWong007",
+          "https://x.com/MichaelWong_CN",
+          "https://space.bilibili.com/443206464",
+          "https://www.cnblogs.com/michaelwong007"
+        ]
+      }
+    </script>
   </head>
 
   <body>
