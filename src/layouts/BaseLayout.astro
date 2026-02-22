@@ -159,9 +159,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       const brandNav = document.getElementById('brandNav');
       const compactQuery = window.matchMedia('(max-width: 560px)');
 
-      const setCompactState = (isCompact) => {
+      const setCompactState = (isCompact: boolean) => {
         body.classList.toggle('is-compact', isCompact);
-        if (!isCompact) {
+        if (!isCompact && brandLink) {
           body.classList.remove('nav-expanded');
           brandLink.setAttribute('aria-expanded', 'false');
         }
@@ -172,7 +172,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         setCompactState(event.matches);
       });
 
-      brandLink.addEventListener('click', (event) => {
+      if (brandLink) {
+        brandLink.addEventListener('click', (event) => {
         if (!body.classList.contains('is-compact')) {
           return;
         }
@@ -185,7 +186,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         }
 
         window.location.href = '/';
-      });
+        });
+      }
 
       document.addEventListener('click', (event) => {
         if (!body.classList.contains('is-compact')) {
@@ -196,7 +198,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
           return;
         }
 
-        if (brandNav.contains(event.target)) {
+        if (!brandNav || !brandLink) {
+          return;
+        }
+
+        if (event.target instanceof Node && brandNav.contains(event.target)) {
           return;
         }
 
