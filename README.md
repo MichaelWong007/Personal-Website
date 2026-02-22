@@ -1,6 +1,6 @@
 # 🌌 michaelwong.space
 
-你好！欢迎来到 **michaelwong.space** —— 二两碘酊的个人空间。
+你好！欢迎来到 **michaelwong.space** —— 二两碘酊的个人空间。 
 
 这是一个融合诗文、算法等超多内容的多维个人网站，值得一提的是，AI 在网站的搭建中起到了很大的作用。
 
