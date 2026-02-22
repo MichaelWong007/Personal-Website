@@ -3,7 +3,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://michaelwong.space', // 请替换为您的实际域名
+  site: 'https://michaelwong.space',
   integrations: [
     mdx(),
     sitemap({
