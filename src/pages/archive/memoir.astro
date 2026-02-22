@@ -241,7 +241,6 @@ const title = "走过人生的复平面 | 二两碘酊 MichaelWong";
         const data = Object.fromEntries(formData.entries());
 
         try {
-          // 这里假设后端 API 路径为 /api/book-interest
           const response = await fetch('/api/book-interest', {
             method: 'POST',
             headers: {
@@ -250,12 +249,14 @@ const title = "走过人生的复平面 | 二两碘酊 MichaelWong";
             body: JSON.stringify(data),
           });
 
+          const result = await response.json();
+
           if (response.ok) {
-            status.textContent = '感谢您的支持！预定信息已提交。';
+            status.textContent = result.message || '感谢您的支持！预定信息已提交，我会尽快与您联系。';
             status.className = 'form-status success';
             (e.target as HTMLFormElement).reset();
           } else {
-            status.textContent = '提交失败，请稍后重试。';
+            status.textContent = result.error || '提交失败，请稍后重试。';
             status.className = 'form-status error';
           }
         } catch (error) {

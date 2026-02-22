@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://michaelwong.space',
+  output: 'static', // static 模式现已支持 Serverless Functions
   integrations: [
     mdx(),
     sitemap({
@@ -17,6 +18,5 @@ export default defineConfig({
         },
       },
     })
-  ],
-  output: 'static'
+  ]
 });
