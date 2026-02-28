@@ -22,9 +22,22 @@ const title = "走过人生的复平面 | 二两碘酊 MichaelWong";
           <h2 class="page-subtitle">个人信息学奥林匹克生涯回顾</h2>
         </div>
         
-        <p class="curatorial-statement">
-          从最开始到一切的结局，完整详细的个人回忆录。
-        </p>
+        <div class="curatorial-section">
+          <p class="curatorial-statement">
+            从最开始到一切的结局，完整详细的个人回忆录。
+          </p>
+          
+          <div class="curatorial-reviews">
+            <div class="curatorial-review-item">
+              <p>“每个人都有自己珍藏的一段奋斗史。读这些文字，我仿佛又看到仲春的阳光穿过嘉陵江的晨雾，透过树叶照在我的书页上。”</p>
+              <span class="review-author">—— 南开大学 陈景行</span>
+            </div>
+            <div class="curatorial-review-item">
+              <p>“在混沌中最先清醒者，大抵往往要独自承受时代的误解罢！”</p>
+              <span class="review-author">—— 中国科学技术大学 田晟轩</span>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="main-content">
@@ -68,7 +81,7 @@ const title = "走过人生的复平面 | 二两碘酊 MichaelWong";
           </div>
         </div>
       </div>
-      
+
       <div id="physical-book" class="physical-section">
         <h2 class="section-title">关于实体书</h2>
         
@@ -371,9 +384,55 @@ const title = "走过人生的复平面 | 二两碘酊 MichaelWong";
     font-size: 1.2rem;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+  }
+
+  .curatorial-section {
     margin-top: 1rem;
     padding-left: 1.5rem;
-    border-left: 2px solid rgba(255, 255, 255, 0.3);
+    border-left: 4px solid rgba(255, 255, 255, 0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.5rem 1.5rem 1.5rem 2rem;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .curatorial-reviews {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    position: relative;
+  }
+
+  .curatorial-reviews::before {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    margin-bottom: 0.5rem;
+  }
+
+  .curatorial-review-item {
+    font-family: 'Noto Serif SC', serif;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .curatorial-review-item p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+  }
+
+  .curatorial-review-item .review-author {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: right;
   }
 
   .main-content {
