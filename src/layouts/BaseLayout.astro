@@ -157,7 +157,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       const body = document.body;
       const brandLink = document.getElementById('brandLink');
       const brandNav = document.getElementById('brandNav');
-      const compactQuery = window.matchMedia('(max-width: 560px)');
+      const compactQuery = window.matchMedia('(max-width: 768px)');
 
       const setCompactState = (isCompact: boolean) => {
         body.classList.toggle('is-compact', isCompact);
@@ -209,6 +209,42 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         body.classList.remove('nav-expanded');
         brandLink.setAttribute('aria-expanded', 'false');
       });
+
+      // 根据设备 DPI/像素密度动态调整 Bodoni Moda 的光学尺寸 (opsz)
+      function adjustOpticalSize() {
+        const dpr = window.devicePixelRatio || 1;
+        
+        // 计算适合的 opsz 值 - 激进方案，强化对比
+        // DPR 1.0 (标准屏): opsz 10 (衬线适中，保证可读性)
+        // DPR 1.5-2.0 (高清屏): opsz 22 (大幅提升细节)
+        // DPR 2.0-3.0 (Retina): opsz 36 (极细衬线，展现优雅)
+        // DPR 3.0+ (超高清): opsz 48 (极致细腻)
+        let baseOpsz;
+        
+        if (dpr <= 1.25) {
+          baseOpsz = 10; // 标准显示器
+        } else if (dpr <= 1.75) {
+          baseOpsz = 24; // 中等分辨率
+        } else if (dpr <= 2.5) {
+          baseOpsz = 36; // 高分辨率 (大多数 Retina)
+        } else if (dpr <= 3.5) {
+          baseOpsz = 48; // 超高分辨率
+        } else {
+          baseOpsz = 64; // 极致超高清 (4K+)
+        }
+        
+        // 设置 CSS 自定义属性
+        document.documentElement.style.setProperty('--bodoni-opsz', String(baseOpsz));
+        
+        console.log(`设备像素比: ${dpr.toFixed(2)}x, 应用光学尺寸: ${baseOpsz}`);
+      }
+      
+      // 页面加载时调整
+      adjustOpticalSize();
+      
+      // 监听 DPR 变化（如外接显示器切换）
+      const dprQuery = window.matchMedia(`(resolution: ${window.devicePixelRatio}dppx)`);
+      dprQuery.addEventListener('change', adjustOpticalSize);
     </script>
 
   </body>
@@ -219,6 +255,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     --bg-color: #000000;
     --text-primary: #ffffff;
     --text-secondary: rgba(255, 255, 255, 0.85);
+    --bodoni-opsz: 18; /* 默认光学尺寸，会被 JavaScript 动态覆盖 */
   }
 
   html {
@@ -314,7 +351,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    margin-bottom: 27px;
+    margin-bottom: 25px; /* 增加 logo 和下方导航栏边框之间的绝对距离 */
     position: relative;
   }
 
@@ -354,6 +391,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   .nav-panel {
     position: relative;
     padding: 0;
+    margin-top: 8px; /* 额外挤出空间，避开上方模糊层的扩散 */
   }
 
   .nav-panel::before {
@@ -455,28 +493,25 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       gap: 24px;
     }
 
+    /* 移动端替代 Hover: 默认提亮标题颜色 */
     .vertical-nav .en {
       font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.85);
     }
 
     .vertical-nav .zh {
       font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.65);
     }
 
+    /* 移动端替代 Hover: 默认展开导航描述文本 */
     .nav-desc {
       max-width: 28ch;
-    }
-  }
-
-  @media (max-width: 560px) {
-    .brand-nav {
-      top: 16px;
-      right: 16px;
-    }
-
-    .logo {
-      height: 52px;
-      transform: translateX(6px);
+      max-height: 120px;
+      margin-top: 8px;
+      opacity: 1;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.5);
     }
 
     .layout-body.is-compact .brand::before {
@@ -491,14 +526,28 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     }
 
     .layout-body.is-compact.nav-expanded .vertical-nav {
-      max-height: 540px;
+      max-height: 800px; /* 描述展开后变高，原为 540px */
       opacity: 1;
       pointer-events: auto;
-      transform: translateY(0);
+      transform: translateY(18px); /* 向下推一点，增加留白让它远离LOGO */
     }
 
     .layout-body.is-compact.nav-expanded .nav-panel::before {
       opacity: 1;
+      top: 14px; /* 把整个模糊底板稍往下错位 */
+      inset: -4px -24px; /* 增加模糊底板的向外的扩张面积，让文字外围有更多边距 */
+    }
+  }
+
+  @media (max-width: 560px) {
+    .brand-nav {
+      top: 16px;
+      right: 16px;
+    }
+
+    .logo {
+      height: 52px;
+      transform: translateX(6px);
     }
   }
 </style>

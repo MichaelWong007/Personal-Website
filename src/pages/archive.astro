@@ -24,12 +24,15 @@ const title = "Archive 个人档案 | 二两碘酊 MichaelWong";
     <div class="divider"></div>
     <div class="archive-content-wrapper">
       <nav class="archive-list">
-        <a href="/archive/vis" class="archive-item" data-desc="包括包括个人简介、主题色、徽标、中英文字标、中英文签字等" data-title="Identity
+        <a href="/archive/vis" class="archive-item" data-desc="包括个人简介、主题色、徽标、中英文字标、中英文签字等" data-title="Identity
 System">
           <span class="archive-num">I</span>
           <div class="archive-text">
-            <span class="archive-zh">个人标识系统</span>
-            <span class="archive-en">Identity System</span>
+            <div class="archive-title-wrapper">
+              <span class="archive-zh">个人标识系统</span>
+              <span class="archive-en">Identity System</span>
+            </div>
+            <span class="archive-item-desc-mobile">包括个人简介、主题色、徽标、中英文字标、中英文签字等</span>
           </div>
         </a>
         <a href="/archive/memoir" class="archive-item" data-desc="《走过人生的复平面：个人信息学奥林匹克生涯回顾》
@@ -37,32 +40,44 @@ System">
 Memoir">
           <span class="archive-num">II</span>
           <div class="archive-text">
-            <span class="archive-zh">竞赛回忆录</span>
-            <span class="archive-en">Olympiad Memoir</span>
+            <div class="archive-title-wrapper">
+              <span class="archive-zh">竞赛回忆录</span>
+              <span class="archive-en">Olympiad Memoir</span>
+            </div>
+            <span class="archive-item-desc-mobile">《走过人生的复平面》从最开始到一切的结局，完整详细。</span>
           </div>
         </a>
         <a href="/archive/video" class="archive-item" data-desc="收录了二两碘酊迄今为止的所有视频作品，包括个人创作、参赛作品与官方项目。" data-title="Video
 Projects">
           <span class="archive-num">III</span>
           <div class="archive-text">
-            <span class="archive-zh">视频作品</span>
-            <span class="archive-en">Video Projects</span>
+            <div class="archive-title-wrapper">
+              <span class="archive-zh">视频作品</span>
+              <span class="archive-en">Video Projects</span>
+            </div>
+            <span class="archive-item-desc-mobile">收录了二两碘酊迄今为止的所有视频作品，包括个人创作、参赛作品与官方项目。</span>
           </div>
         </a>
         <a href="/archive/notes" class="archive-item" data-desc="目前包括了手制书与组图，以后还有更多！" data-title="Visual
 Notes">
           <span class="archive-num">IV</span>
           <div class="archive-text">
-            <span class="archive-zh">作品集</span>
-            <span class="archive-en">Visual Notes</span>
+            <div class="archive-title-wrapper">
+              <span class="archive-zh">作品集</span>
+              <span class="archive-en">Visual Notes</span>
+            </div>
+            <span class="archive-item-desc-mobile">目前包括了手制书与组图，以后还有更多！</span>
           </div>
         </a>
         <a href="/archive/photos" class="archive-item" data-desc="关于过往，关于长青的记忆。" data-title="Historical
 Photographs">
           <span class="archive-num">V</span>
           <div class="archive-text">
-            <span class="archive-zh">图集</span>
-            <span class="archive-en">Historical Photographs</span>
+            <div class="archive-title-wrapper">
+              <span class="archive-zh">图集</span>
+              <span class="archive-en">Historical Photographs</span>
+            </div>
+            <span class="archive-item-desc-mobile">关于过往，关于长青的记忆。</span>
           </div>
         </a>
       </nav>
@@ -226,7 +241,7 @@ Photographs">
     font-family: 'Bodoni Moda', 'Noto Serif SC', serif;
     font-size: 3rem;
     font-weight: 420;
-    font-variation-settings: "opsz" 24, "wght" 420;
+    font-variation-settings: "opsz" var(--bodoni-opsz), "wght" 420;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     margin: 0;
@@ -319,7 +334,7 @@ Photographs">
   .preview-title {
     font-family: 'Bodoni Moda', serif;
     font-weight: 300;
-    font-variation-settings: "opsz" 24, "wght" 300;
+    font-variation-settings: "opsz" var(--bodoni-opsz), "wght" 300;
     font-size: 3.6rem;
     letter-spacing: 0.1em;
     color: var(--text-primary);
@@ -369,6 +384,11 @@ Photographs">
   .archive-item:hover .archive-num {
     color: rgba(255,255,255,0.9);
   }
+  .archive-title-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
   .archive-text {
     display: flex;
     flex-direction: column;
@@ -388,6 +408,9 @@ Photographs">
     color: rgba(255,255,255,0.5);
     letter-spacing: 0.05em;
     transition: color 0.3s ease;
+  }
+  .archive-item-desc-mobile {
+    display: none; /* 默认隐藏，仅在移动端显示 */
   }
   .archive-item:hover .archive-zh {
     color: #fff;
@@ -409,6 +432,19 @@ Photographs">
   }
   /* 移除旧的 light 样式 */
   @media (max-width: 1024px) {
+    .red-light-large {
+      width: 100vw;
+      height: 100vw;
+      left: -180px;
+      top: 200px;
+    }
+    .blue-light-small {
+      width: 50vw;
+      height: 50vw;
+      top: 85px;
+      left: 45vw;
+    }
+
     .archive-container {
       max-width: 100%;
       margin-right: 5vw;
@@ -424,42 +460,166 @@ Photographs">
     .archive-preview {
       display: none; /* Hide preview on smaller screens or mobile */
     }
+    /* 在这里（768px - 1024px 之间）也让描述显示，因为 hover preview 被隐藏了 */
+    .archive-item-desc-mobile {
+      display: block;
+      margin-top: 0.5rem;
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.5;
+      letter-spacing: 0.05em;
+    }
   }
   @media (max-width: 768px) {
     .archive-container {
       margin-left: 5vw;
       padding-top: 10vh;
+      margin-right: 5vw;
     }
     .page-title-row {
       gap: 0.15rem;
     }
     .page-title {
-      font-size: 2rem;
+      font-size: 2.2rem;
       height: 2.5rem;
+      letter-spacing: 0.02em;
     }
     .page-title-zh {
       font-size: 1rem;
+      letter-spacing: 0.2em;
+      margin-top: 1.5rem;
     }
     .page-title .typed-cursor {
-      font-size: 2rem;
+      font-size: 2.2rem;
+    }
+    .page-subtitle {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.5rem;
+    }
+    .divider {
+      margin-bottom: 2.5rem;
     }
     
+    .archive-content-wrapper {
+      gap: 2rem;
+    }
     .archive-list {
-      gap: 1rem;
+      gap: 0.8rem;
     }
     .archive-item {
-      padding: 0.8rem 0;
-      gap: 1rem;
+      padding: 0.75rem 0;
+      gap: 0.8rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: flex-start;
+    }
+    .archive-item:hover {
+      padding-left: 0;
+      background: linear-gradient(to right, rgba(255,255,255,0.02), transparent);
     }
     .archive-num {
-      font-size: 1.2rem;
-      min-width: 2rem;
+      font-size: 1.1rem;
+      min-width: 1.8rem;
+      text-align: right;
+    }
+    .archive-title-wrapper {
+      flex-direction: row;
+      align-items: baseline;
+      gap: 0.6rem;
+      flex-wrap: wrap;
     }
     .archive-zh {
-      font-size: 1.1rem;
+      font-size: 1.15rem; /* 字体放大 */
     }
     .archive-en {
+      font-size: 0.85rem; /* 字体放大 */
+      text-transform: none; /* 如果需要可以在这里取消全大写，视设计需求，这里保留大写 */
+    }
+    
+    .archive-item-desc-mobile {
+      font-size: 0.85rem;
+    }
+  }
+
+  @media (max-width: 560px) {
+    /* 背景灯光适配还原一点 */
+    .red-light-large {
+      width: 120vw;
+      height: 120vw;
+      left: -200px;
+      top: 250px;
+    }
+    .blue-light-small {
+      width: 60vw;
+      height: 60vw;
+      top: 150px;
+      left: 0w;
+    }
+
+    /* 极限手机屏幕适配 */
+    .archive-container {
+      margin-left: 4vw;
+      margin-right: 4vw;
+      padding-top: 8vh;
+    }
+    .page-title {
+      font-size: 1.8rem;
+      height: 2rem;
+    }
+    .page-title-zh {
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      letter-spacing: 0.15em;
+    }
+    .page-title .typed-cursor {
+      font-size: 1.8rem;
+    }
+    .page-subtitle {
+      font-size: 0.85rem;
+      margin-bottom: 1.2rem;
+    }
+    .divider {
+      width: 40px;
+      margin-bottom: 2rem;
+    }
+
+    .archive-list {
+      gap: 0.5rem;
+    }
+    .archive-item {
+      padding: 0.6rem 0;
+      gap: 0.6rem;
+    }
+    .archive-num {
+      font-size: 1rem;
+      min-width: 1.5rem;
+    }
+    .archive-title-wrapper {
+      flex-direction: row;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+    .archive-zh {
+      font-size: 1.05rem; /* 字体放大 */
+      letter-spacing: 0.05em;
+    }
+    .archive-en {
+      font-size: 0.75rem; /* 字体放大 */
+      letter-spacing: 0.02em;
+    }
+
+    .archive-item-desc-mobile {
       font-size: 0.8rem;
+      margin-top: 0.4rem;
+    }
+
+    .profile-content {
+      margin-top: 1.5rem;
+      padding: 24px 16px;
+      border-radius: 12px;
     }
   }
 </style>
