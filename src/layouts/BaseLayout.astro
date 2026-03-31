@@ -224,13 +224,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         if (dpr <= 1.25) {
           baseOpsz = 10; // 标准显示器
         } else if (dpr <= 1.75) {
-          baseOpsz = 24; // 中等分辨率
+          baseOpsz = 16; // 中等分辨率
         } else if (dpr <= 2.5) {
-          baseOpsz = 36; // 高分辨率 (大多数 Retina)
+          baseOpsz = 24; // 高分辨率 (大多数 Retina)
         } else if (dpr <= 3.5) {
-          baseOpsz = 48; // 超高分辨率
+          baseOpsz = 36; // 超高分辨率
         } else {
-          baseOpsz = 64; // 极致超高清 (4K+)
+          baseOpsz = 48; // 极致超高清 (4K+)
         }
         
         // 设置 CSS 自定义属性
